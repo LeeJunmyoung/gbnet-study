@@ -76,3 +76,67 @@
 # Call-Graph:  create-directory-layout → generate-sources  → compile
 
 ```
+
+### tasks
+> tasks는 실행할수 있는 Code 이다.  
+> 여러 속성 (또는 원하는 경우 인수)을 가질 수 있다. 속성의 값은 속성에 대한 참조를 포함 할 수 있습니다.  
+[tasks-WYO](https://ant.apache.org/manual/develop.html#writingowntask)
+
+```
+# java
+package com.mydomain;
+
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Task;
+
+public class MyVeryOwnTask extends Task {
+    private String msg;
+
+    // The method executing the task
+    public void execute() throws BuildException {
+        System.out.println(msg);
+    }
+
+    // The setter for the "message" attribute
+    public void setMessage(String msg) {
+        this.msg = msg;
+    }
+}
+
+=====================================
+
+# ANT - example 1
+<?xml version="1.0"?>
+
+<project name="OwnTaskExample" default="main" basedir=".">
+  <taskdef name="mytask" classname="com.mydomain.MyVeryOwnTask"/>
+
+  <target name="main">
+    <mytask message="Hello World! MyVeryOwnTask works!"/>
+  </target>
+</project>
+
+=====================================
+
+# ANT - example 2
+<?xml version="1.0"?>
+
+<project name="OwnTaskExample2" default="main" basedir=".">
+
+  <target name="build" >
+    <mkdir dir="build"/>
+    <javac srcdir="source" destdir="build"/>
+  </target>
+
+  <target name="declare" depends="build">
+    <taskdef name="mytask"
+        classname="com.mydomain.MyVeryOwnTask"
+        classpath="build"/>
+  </target>
+
+  <target name="main" depends="declare">
+    <mytask message="Hello World! MyVeryOwnTask works!"/>
+  </target>
+</project>
+
+```
