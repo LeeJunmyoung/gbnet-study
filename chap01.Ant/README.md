@@ -11,3 +11,8 @@
 > 1. name : 프로젝트의 이름. 
 > 2. default : 타겟이 없을때 디폴트로 사용됨. 
 > 3. basedir : 모든 수행이 되는 기본 디렉토리 경로   
+
+```
+<project name="MyProject" default="dist" basedir=".">
+</project>
+```
