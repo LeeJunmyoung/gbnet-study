@@ -7,7 +7,7 @@
 
 ## Build file
 
-### 1. project
+### 1. Project
 > 프로젝트는 3개의 속성을 가지고 있다.  
 > 1. name : 프로젝트의 이름. 
 > 2. default : 타겟이 없을때 디폴트로 사용됨. 
@@ -18,7 +18,7 @@
 </project>
 ```
   
-### 2. targets
+### 2. Targets
 > 타겟은 다른 타겟에 의존적일수 있다.  
 > 먼저 컴파일 한 후 배포 패키지를 빌드 할 수 있으므로 배포 타겟은 컴파일 타겟에 따라 달라집니다. Ant는 이러한 의존성을 해결합니다.
 > 의존성 관계를 맺어서 순서대로 진행할수 있도록 해줌.
@@ -77,7 +77,7 @@
 
 ```
 
-### tasks
+### Tasks
 > tasks는 실행할수 있는 Code 이다.  
 > 여러 속성 (또는 원하는 경우 인수)을 가질 수 있다. 속성의 값은 속성에 대한 참조를 포함 할 수 있습니다.  
 [tasks-WYO](https://ant.apache.org/manual/develop.html#writingowntask)
@@ -141,7 +141,7 @@ public class MyVeryOwnTask extends Task {
 
 ```
 
-### properties
+### Properties
 > properties는 빌드 프로세스를 사용자가 정의하거나 빌드 파일의 반복되는 문자열을 커스터마이징을 할수 있다.
 [properties-manual](https://ant.apache.org/manual/Tasks/property.html)
 
@@ -149,7 +149,7 @@ public class MyVeryOwnTask extends Task {
 <property name="foo.dist" value="dist"/>
 ```
 
-### example build file
+### Example build file
 ```
 <project name="MyProject" default="dist" basedir=".">
   <description>
@@ -190,3 +190,5 @@ public class MyVeryOwnTask extends Task {
   </target>
 </project>
 ```
+
+### Token Filters
