@@ -192,3 +192,5 @@ public class MyVeryOwnTask extends Task {
 ```
 
 ### Token Filters
+> 파일의 값을 치환해줌.
+
