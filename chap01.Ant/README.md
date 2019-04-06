@@ -193,4 +193,13 @@ public class MyVeryOwnTask extends Task {
 
 ### Token Filters
 > 파일의 값을 치환해줌.
+  
+### Path-like Structures
+> PATH- 그리고 CLASSPATH을 지정할수 있다.
 
+```
+<classpath>
+  <pathelement path="${classpath}"/>
+  <pathelement location="lib/helper.jar"/>
+</classpath>
+```
