@@ -203,3 +203,16 @@ public class MyVeryOwnTask extends Task {
   <pathelement location="lib/helper.jar"/>
 </classpath>
 ```
+
+### Command-line Arguments
+> 여러 task의 command line에서 다른 프로세스로 전달되는 인수를 사용한다.   
+```
+<target name="help">
+  <exec executable="cmd">
+    <arg value="/c"/>
+    <arg value="ant.bat"/>
+    <arg value="-p"/>
+  </exec>
+</target>
+```
+
