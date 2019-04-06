@@ -140,3 +140,11 @@ public class MyVeryOwnTask extends Task {
 </project>
 
 ```
+
+### properties
+> properties는 빌드 프로세스를 사용자가 정의하거나 빌드 파일의 반복되는 문자열을 커스터마이징을 할수 있다.
+[properties-manual](https://ant.apache.org/manual/Tasks/property.html)
+
+```
+<property name="foo.dist" value="dist"/>
+```
