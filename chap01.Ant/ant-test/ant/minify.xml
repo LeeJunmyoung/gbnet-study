@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Minify JS and CSS" default="js.minify" basedir=".">
+	<description>
+		ANT build script to automate minification of library.js
+		and style.css.
+	</description>
+
+
+	<property name="antTaskJar" value="yui-compressor-ant-task-1.2.4.jar" />
+	<property name="compressorJar" value="yuicompressor-2.4.7.jar" />
+	<property name="js.dir" value="../resource" />
+	<property name="css.dir" value="../resource" />
+
+	<target name="css.minify" description="CSS 파일 minify 처리">
+		<echo># CSS 디렉토리 구조 복사 및 기존 Minified 파일 삭제 ...</echo>
+		<delete>
+			<fileset dir="${css.dir}" includes="**/*min.css" />
+		</delete>
+
+
+		<echo># CSS 파일 Minifying ...</echo>
+		<apply executable="java" parallel="false">
+			<fileset dir="${css.dir}" includes="**/*.css" />
+			<arg line="-jar" />
+			<arg path="yuicompressor-2.4.7.jar" />
+			<srcfile />
+			<arg line="--charset UTF-8 --type css -o" />
+			<mapper type="glob" from="*.css" to="${css.dir}/*.min.css" />
+			<targetfile />
+		</apply>
+	</target>
+
+
+	<target name="js.minify" depends="css.minify" description="JS 파일 minify 처리">
+		<echo># JS 디렉토리 구조 복사 및 기존 Minified 파일 삭제 ...</echo>
+		<delete>
+			<fileset dir="${js.dir}" includes="**/*.min.js" />
+		</delete>
+
+
+		<echo># JS 파일 Minifying ...</echo>
+		<apply executable="java" parallel="false">
+			<fileset dir="${js.dir}" includes="**/*.js" />
+			<arg line="-jar" />
+			<arg path="yuicompressor-2.4.7.jar" />
+			<srcfile />
+			<arg line="--charset UTF-8 --type js -o" />
+			<mapper type="glob" from="*.js" to="${js.dir}/*.min.js" />
+			<targetfile />
+		</apply>
+	</target>
+
+
+
+</project>
