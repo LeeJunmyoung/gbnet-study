@@ -12,3 +12,8 @@ Maven Profile 기능을 통해 배포 설정 파일을 관리하고 배포 파�
 
 ## 프로젝트 구조
 ![maven_struct](./maven_struct.png)
+
+## 프로젝트 생성
+```
+mvn archetype:generate
+```
