@@ -17,3 +17,7 @@ Maven Profile 기능을 통해 배포 설정 파일을 관리하고 배포 파�
 ```
 mvn archetype:generate
 ```
+
+1. groupId:  groupId uniquely identifies your project across all projects. 모든 프로젝트 사이에서 고유하게 식별해주는 것.  ex)org.apache.maven   
+2. artifactId : artifactId is the name of the jar without version. artifactId는 버전 정보를 생략한 jar 파일의 이름이다.
+3. version : 버젼!
