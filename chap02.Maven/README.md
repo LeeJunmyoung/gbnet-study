@@ -24,6 +24,7 @@ mvn archetype:generate
 
 ## Maven Life Cycle
 ![MavenLifecycle](./MavenLifecycle.png)  
+[Maven-LifeCycle-Ref](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference)
 > maven은 clean, default, site 3가지의 life cycle을 가진다.  
 
 1. clean : 빌드시 생성되었던 산출물 삭제
@@ -34,3 +35,4 @@ mvn archetype:generate
 
 1. clean :  attempts to clean a project's working directory of the files that we're generated at build-time .
 - build-time에 생성된 프로젝트의 디렉토리 혹은 파일을 삭제하는것을 시도한다.
+
