@@ -21,3 +21,11 @@ mvn archetype:generate
 1. groupId:  groupId uniquely identifies your project across all projects. 모든 프로젝트 사이에서 고유하게 식별해주는 것.  ex)org.apache.maven   
 2. artifactId : artifactId is the name of the jar without version. artifactId는 버전 정보를 생략한 jar 파일의 이름이다.
 3. version : 버젼!
+
+## Maven Life Cycle
+![MavenLifecycle](./MavenLifecycle.png)  
+> maven은 clean, default, site 3가지의 life cycle을 가진다.  
+
+1. clean : 빌드시 생성되었던 산출물 삭제
+2. default : 프로젝트 배포절차, 패키지 타입별로 다르게 정의됌.
+3. site : 프로젝트 문서화 절차
