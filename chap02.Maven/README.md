@@ -40,3 +40,6 @@ mvn archetype:generate
 
 1. generate-resources : generate resources for inclusion in the package.
 - 패키지 안에 포함될 자원을 생성한다.
+
+2. process-resources : copy and process the resources into the destination directory, ready for packaging.
+- 패키징 준비를 위한 디렉토리 폴더 안으로 자원을 만든다.
