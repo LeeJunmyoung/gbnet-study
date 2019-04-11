@@ -36,3 +36,7 @@ mvn archetype:generate
 1. clean :  attempts to clean a project's working directory of the files that we're generated at build-time .
 - build-time에 생성된 프로젝트의 디렉토리 혹은 파일을 삭제하는것을 시도한다.
 
+### default
+
+1. generate-resources : generate resources for inclusion in the package.
+- 패키지 안에 포함될 자원을 생성한다.
