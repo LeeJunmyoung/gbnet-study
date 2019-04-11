@@ -29,3 +29,8 @@ mvn archetype:generate
 1. clean : 빌드시 생성되었던 산출물 삭제
 2. default : 프로젝트 배포절차, 패키지 타입별로 다르게 정의됌.
 3. site : 프로젝트 문서화 절차
+
+### clean
+
+1. clean :  attempts to clean a project's working directory of the files that we're generated at build-time .
+- build-time에 생성된 프로젝트의 디렉토리 혹은 파일을 삭제하는것을 시도한다.
