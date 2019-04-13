@@ -40,13 +40,16 @@ mvn archetype:generate
 
 1. generate-resources : generate resources for inclusion in the package.
 - 패키지 안에 포함될 자원을 생성한다.
-
+  
+  
 2. process-resources : copy and process the resources into the destination directory, ready for packaging.
 - 패키징 준비를 위한 디렉토리 폴더 안으로 자원을 만든다.
-
+  
+  
 3. compile : compile the source code of the project.
 - 프로젝트의 소스코드를 컴파일 한다.
-
+  
+    
 4. jar:jar : This plugin provides the capability to build jars. If you like to sign jars please use the Maven Jarsigner Plugin.
 - target 폴더에 패키지된 Jar 파일이 생성한다.
 ```
@@ -65,18 +68,23 @@ mvn archetype:generate
     </configuration>
 </plugin>
 ```
-  
+
+      
 5. install : The Install Plugin is used during the install phase to add artifact(s) to the local repository.
 - 로컬 레포스토리로 배포
+  
 
 6. deploy : The deploy plugin is primarily used during the deploy phase, to add your artifact(s) to a remote repository for sharing with other developers and projects. 
 - 원격 레포스토리로 배포
+  
 
 7. site : The Site Plugin is used to generate a site for the project. 
 - target/site에 문서 사이트 생성.
+  
 
 8. project-info-reports : The Maven Project Info Reports plugin is used to generate reports information about the project.
 - 프로젝트의 reposts를 생성한다.
+  
 
 9. war : There are 4 ways to use the WAR Plugin:
 > 1.using the package phase with the project package type as war  
@@ -84,3 +92,5 @@ mvn archetype:generate
 > 3.invocation of the war:exploded goal  
 > 4.invocation of the war:inplace goal  
 > war파일로 패키징할때.
+  
+  
