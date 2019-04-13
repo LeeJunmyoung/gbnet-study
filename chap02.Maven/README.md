@@ -77,3 +77,10 @@ mvn archetype:generate
 
 8. project-info-reports : The Maven Project Info Reports plugin is used to generate reports information about the project.
 - 프로젝트의 reposts를 생성한다.
+
+9. war : There are 4 ways to use the WAR Plugin:
+> 1.using the package phase with the project package type as war  
+> 2.invocation of the war:war goal  
+> 3.invocation of the war:exploded goal  
+> 4.invocation of the war:inplace goal  
+> war파일로 패키징할때.
