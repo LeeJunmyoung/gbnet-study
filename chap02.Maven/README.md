@@ -93,9 +93,9 @@ mvn archetype:generate
 > 4.invocation of the war:inplace goal  
 > war파일로 패키징할때.
   
-  ## Dependencies
-  > maven은 빌드툴이지만 필요한 라이브러리의 의존성관계를 찾아서 추가해 줄 수 있다. 스코프를 지정하여 각 시점마다 의존성을 추가할지 제외할지 결정할 수 있음
+## Dependencies
+> maven은 빌드툴이지만 필요한 라이브러리의 의존성관계를 찾아서 추가해 줄 수 있다. 스코프를 지정하여 각 시점마다 의존성을 추가할지 제외할지 결정할 수 있음
+    
   
-
-
-  
+## profile
+> 각 환경의 따라 설정을 달리 할 수 있다. 개발, 로컬, 배포환경같은.  
