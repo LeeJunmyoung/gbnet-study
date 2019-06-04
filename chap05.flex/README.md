@@ -8,16 +8,16 @@
 > flex 를 하는 이유는 react-native에 경우 레이아웃을 flex 로 한당.
 
 ## flex (부모 속성 - container)
-1. flex-direction
-2. flex-wrap
-3. justify-content
-4. align-items
-5. align-content
+1. flex-direction : item의 진행 방향을 지정한다.  
+2. flex-wrap : item을 wrap 할것인지 아닌지를 지정.  
+3. justify-content : flex-direction 기준(중심축)으로 정렬.  
+4. align-items : flex-direction 교차 기준(교차축)으로 정렬.  
+5. align-content : align-content 속성은 flex-wrap 속성의 동작을 변경할 수 있음.  
 
 
 ## flex (자식 속성 - item)
-1. flex
-2. flex-grow : flexible item들이 차지할 너비들에 대한 증가형 숫자를 지정한다.
-3. flex-shrink : flexible item들이 차지할 너비들에 대한 감소형 숫자를 지정한다.
-4. flex-basis : item의 길이를 지정한다.
-5. order
+1. flex : flex 속성은 flex-grow, flex-shrink, flex-basis의 축약속성.   
+2. ~~flex-grow : flexible item들이 차지할 너비들에 대한 증가형 숫자를 지정한다.~~  
+3. ~~flex-shrink : flexible item들이 차지할 너비들에 대한 감소형 숫자를 지정한다.~~  
+4. flex-basis : item의 길이를 지정한다.    
+5. ~~order : flex들간의 순서를 변경할때 사용~~  
