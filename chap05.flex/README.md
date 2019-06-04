@@ -22,5 +22,6 @@
 4. flex-basis : item의 길이를 지정한다.    
 5. ~~order : flex들간의 순서를 변경할때 사용~~  
 
-[flexboxfroggy](https://flexboxfroggy.com/#ko)
-[code pen layout exam](https://codepen.io/leejunmyoung/pen/mYozLj)
+[flexboxfroggy](https://flexboxfroggy.com/#ko)  
+
+[code pen layout exam](https://codepen.io/leejunmyoung/pen/mYozLj)  
