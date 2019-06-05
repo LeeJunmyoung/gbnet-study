@@ -4,32 +4,149 @@
   height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.Body{
+  padding: 60px 20px 0;
+  width: calc(100% - 40px);
+  margin: 0 auto 30px;
+  max-width: 935px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ProfileBody{
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.ProfileBody__left img{
+  width: 168px;
+  height: 168px;
+  border: 1px solid rgba(0,0,0,.0975);
+  border-radius: 50%;
+}
+
+.ProfileBody__left{
+  width: 33%;
+  align-content: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+.ProfileBody__right{
+  width: 67%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.ProfileBody__right__top{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.ProfileBody__right__top h2{
+  color: #262626;
+  font-weight: 300;
+  margin: 0;
+}
+.ProfileBody__right__top span{
+  background-position: -436px -324px;
+  height: 18px;
+  width: 18px;
+  background-image:url(/static/media/f01fcb405c10.04c0f71f.png);
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.common__button{
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  padding: 5px 9px;
+  margin-right: 5px;
+}
+
+.ProfileBody__right__middle{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.ProfileBody__right__middle--item{
+  margin-right: 40px
+}
+.ProfileBody__right__middle--item span{
+  font-weight: 500;
+}
+
+.ProfileBody__right__bottom{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  text-align: left;
+}
+
+.ProfileBody__right__bottom span{
+  font-weight: 700;
+}
+.ProfileMenu{
+  display: flex;
+  border-top: 1px solid #efefef;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  color: #999;
+  height: 52px;
 }
 
-.App-link {
-  color: #61dafb;
+.ProfileMenu--item{
+  display: flex;
+  margin-right: 40px;
+  height: 100%;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ProfileMenu--item:nth-child(1){
+  border-top: 1px solid #262626;
+  color:#262626;
+}
+
+.ProfileMenu--item--img1{
+  height: 12px;
+  width: 12px;
+  background-image:url(/static/media/f01fcb405c10.04c0f71f.png);
+  background-position: -50px -425px;
+  margin-right: 5px;
+}
+
+.ProfileMenu--item--img2{
+  height: 12px;
+  width: 12px;
+  background-image:url(/static/media/f01fcb405c10.04c0f71f.png);
+  background-position: -64px -425px;
+  margin-right: 5px;
+}
+
+.ProfileMenu--item--img3{
+  height: 12px;
+  width: 12px;
+  background-image:url(/static/media/f01fcb405c10.04c0f71f.png);
+  background-position: -436px -399px;
+  margin-right: 5px;
+}
+.ImgList{
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+  
+}
+
+.ImgList--item{
+  width: 33%;
+  max-height: 293px;
+  max-width: 293px;
+  margin-right: 28px;
+  background-color: #262626;
+  cursor: pointer;
+}
+.ImgList .ImgList--item:nth-child(3){
+  margin: 0;
+}
+.ImgList--item:hover{
+  opacity: 0.6;
 }
