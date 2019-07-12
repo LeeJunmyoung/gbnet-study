@@ -28,4 +28,4 @@
 1. CSRF Token 사용 - 해당 요청이 사용자의 정상적인 요청인지를 구분하기 위해 세션별로 CSRF토큰을 생성하여 세션에 저장한다. 
     * Interceptor에서 토큰검사를 한다.
     * 비밀번호 변경과 같은 스크립트를 심어서 공격할수있는데 타사이트로 정보를 넘기는 경우는?? 왓더?
-
+2. 라이브러리 사용 : lucy-xss [참고 사이트](https://github.com/naver/lucy-xss-servlet-filter)
