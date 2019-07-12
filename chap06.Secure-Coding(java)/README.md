@@ -4,7 +4,9 @@
 > SQL Injection 은 사용자가 입력한 데이터를 검증하지 않은 채로 쿼리문의 일부로 활용할 때 발생 할수 있는 취약점이다.   
 > 이러한 취약점으로 인하여 데이터가 무단으로 조회되거나 인증과정이 부적절하게 수행되는 등의 문제점이 발생할 수 있다.
 
+
 ### 조치.
+![Spring-lifecycle](./RequestLife.jpg)
 1. Filter로 검증한다.
 2. Interceptor로 검증한다.
 3. 라이브러리나 Validator로 검증한다.
