@@ -18,6 +18,7 @@
     3.CallableStatement: 저장 프로 시저를 실행하는 데 사용됩니다.
     [참고 사이트](https://javaconceptoftheday.com/statement-vs-preparedstatement-vs-callablestatement-in-java/)
 
+<hr>  
 
 ## Cross Site Script 
 > 크로스 사이트 스크립팅은 외부 입력값을 충분히 검증하지 않고 응답의 일부로 사용할 때 발생할 수 있는 취약점 이다.  
@@ -29,3 +30,8 @@
     * Interceptor에서 토큰검사를 한다.
     * 비밀번호 변경과 같은 스크립트를 심어서 공격할수있는데 타사이트로 정보를 넘기는 경우는?? 왓더?
 2. 라이브러리 사용 : lucy-xss [참고 사이트](https://github.com/naver/lucy-xss-servlet-filter)
+
+<hr>
+
+## 파일 업로드 다운로드
+> 파일 업로드 다운로드 기능이 적절히 제어되지 않으면 악성코드나 쉘프로그램이 서버에 업로드되어 실행될 수 있다.
