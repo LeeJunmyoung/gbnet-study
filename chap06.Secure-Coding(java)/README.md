@@ -19,3 +19,13 @@
     [참고 사이트](https://javaconceptoftheday.com/statement-vs-preparedstatement-vs-callablestatement-in-java/)
 
 
+## Cross Site Script 
+> 크로스 사이트 스크립팅은 외부 입력값을 충분히 검증하지 않고 응답의 일부로 사용할 때 발생할 수 있는 취약점 이다.  
+> 주로 웹 어플리케이션에서 발생하는 취약점이다.  
+> <script>alert('test');</script> 와같은 입력값을 검증하지 않고 출력할 경우.
+
+### 조치 
+1. CSRF Token 사용 - 해당 요청이 사용자의 정상적인 요청인지를 구분하기 위해 세션별로 CSRF토큰을 생성하여 세션에 저장한다. 
+    * Interceptor에서 토큰검사를 한다.
+    * 비밀번호 변경과 같은 스크립트를 심어서 공격할수있는데 타사이트로 정보를 넘기는 경우는?? 왓더?
+
