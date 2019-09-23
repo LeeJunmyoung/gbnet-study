@@ -15,3 +15,18 @@ service elasticsearch start
 # 작동여부 확인
 curl -XGET 'localhost:9200'
 ```
+
+Elastic Search|R DB
+-----|-----
+Index|DataBase
+Type|Table
+Document|Row(Record)
+Field|Column
+Mapping|Schema
+  
+Elastic Search|R DB|CRUD
+-----|-----|-----
+GET|SELECT|READ
+PUT|UPDATE|UPDATE
+POST|INSERT|CREATE
+DELETE|DELETE|DELETE
