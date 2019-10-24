@@ -2,7 +2,7 @@
 
 ## 인덱스 생성
 ```
-> localhost:9200/movie
+> PUT localhost:9200/movie
 # Json Data
 {
     "setting": {
@@ -27,5 +27,10 @@
         }
     }
 }
-
 ```
+
+## 인덱스 삭제
+```
+> DELETE localhost:9200/movie
+```
+
