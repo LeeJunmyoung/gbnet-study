@@ -72,5 +72,20 @@
 # 다건
 > GET localhost:9200/movie/_docs/_search
 
+# Request body 형식의 검색 질의
+> POST /{index}/_search
+{
+    Json 쿼리
+}
+
+> POST /movie/_search
+{
+    "query" : {
+        "term" : { "typeNm" : "장편" }
+    }
+}
+
+# body(Json)
+
 ```
 
