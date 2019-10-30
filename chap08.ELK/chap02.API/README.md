@@ -51,4 +51,26 @@
 	"repNationNm"   : "한국",
 	"repGenreNm"    : "드라마"
 }
+
+# blocked by: [FORBIDDEN/12/index read-only / allow delete (api)] 에러시.
+# 엘라스틱 서치는 용량 부족시 해당에러는 나타내게되고 아래와 같이 입력하면 된다.
+
+> curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_cluster/settings -d 
+'{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
+
+> curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d 
+'{"index.blocks.read_only_allow_delete": null}'
+
+해당 문서 생성시 _id가 생성되며 이 _id를 통해 조회가능하다.
 ```
+
+## 문서 조회
+```
+# 단건
+> GET localhost:9200/movie/_docs/{_id}
+
+# 다건
+> GET localhost:9200/movie/_docs/_search
+
+```
+
