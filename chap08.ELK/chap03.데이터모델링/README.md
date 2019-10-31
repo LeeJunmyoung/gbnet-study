@@ -26,3 +26,27 @@
 영화감독명|directors.peopleNm|object->keyword
 제작사코드|companies.companyCd|object->keyword
 제작사명|companies.companyNm|object->keyword
+
+### 색인할 데이터 
+``` 
+{
+	"movieCd"       : "20173732",
+	"movieNm"       : "착한 아이",
+	"movieNeEn"     : "Be Good Child",
+	"prdtYear"      : "2017",
+	"openDt"        : "",
+	"typeNm"        : "장편",
+	"prdtStatNm"    : "기타",
+	"nationAlt"     : "한국",
+	"genreAlt"      : "드라마,가족",
+	"repNationNm"   : "한국",
+	"repGenreNm"    : "드라마",
+    "directors"     :[{
+        "peopleNm": "아무개"
+    }],
+    "companies"     : [
+        "companyCd" : "",
+        "companyNm" : ""
+    ]
+}
+```
