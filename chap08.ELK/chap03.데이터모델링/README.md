@@ -55,3 +55,30 @@
 > 감독 정보를 나타내는 directors 필드와 제작사 정보를 나타내는 companies 필드는 내부적으로 또 다른 문서 구조를 가지게 되므로 이를 고려해서 계층 구조로 설정
 
 ### 매핑
+```
+> PUT movie_search
+
+{
+    "setting": {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 2
+    },
+    "mappings" : {
+        "_doc" : {
+            "properties" : {
+                "movieCd" :         { "type" : "keyword"    },
+                "movieNm" :         { "type" : "text"       },
+                "movieNeEn" :       { "type" : "text"       },
+                "prdtYear" :        { "type" : "integer"    },
+                "openDt" :          { "type" : "date"       },
+                "typeNm" :          { "type" : "keyword"    },
+                "prdtStatNm" :      { "type" : "keyword"    },
+                "nationAlt" :       { "type" : "keyword"    },
+                "genreAlt" :        { "type" : "keyword"    },
+                "repNationNm" :     { "type" : "keyword"    },
+                "repGenreNm" :      { "type" : "keyword"    }
+            }
+        }
+    }
+}
+```
