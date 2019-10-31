@@ -66,17 +66,58 @@
     "mappings" : {
         "_doc" : {
             "properties" : {
-                "movieCd" :         { "type" : "keyword"    },
-                "movieNm" :         { "type" : "text"       },
-                "movieNeEn" :       { "type" : "text"       },
-                "prdtYear" :        { "type" : "integer"    },
-                "openDt" :          { "type" : "date"       },
-                "typeNm" :          { "type" : "keyword"    },
-                "prdtStatNm" :      { "type" : "keyword"    },
-                "nationAlt" :       { "type" : "keyword"    },
-                "genreAlt" :        { "type" : "keyword"    },
-                "repNationNm" :     { "type" : "keyword"    },
-                "repGenreNm" :      { "type" : "keyword"    }
+                "movieCd" : {
+                    "type" : "keyword"
+                },
+                "movieNm" : {
+                    "type" : "text"
+                    , "analyzer" : "standard"
+                },
+                "movieNmEn" : {
+                    "type" : "keyword"
+                    , "analyzer" : "standard"
+                },
+                "prdtYear" : {
+                    "type" : "integer"
+                },
+                "openDt" : {
+                    "type" : "integer"
+                },
+                "typeNm" : {
+                    "type" : "keyword"
+                },
+                "prdtStatNm" : {
+                    "type" : "keyword"
+                },
+                "nationAlt" : {
+                    "type" : "keyword"
+                },
+                "genreAlt" : {
+                    "type" : "keyword"
+                },
+                "repNationNm" : {
+                    "type" : "keyword"
+                },
+                "repGenreNm" : {
+                    "type" : "keyword"
+                },
+                "companies" : {
+                    "properties" : {
+                        "companyCd" : {
+                            "type" : "keyword"
+                        },
+                        "companyNm" : {
+                            "type" : "keyword"
+                        }
+                    }
+                },
+                "directors" : {
+                    "properties" : {
+                        "peopleNm" : {
+                            "type" : "keyword"
+                        }
+                    }
+                }
             }
         }
     }
