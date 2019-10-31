@@ -123,3 +123,8 @@
     }
 }
 ```
+
+### 매핑확인
+```
+> GET localhost:9200/movie_search/_mapping
+```
