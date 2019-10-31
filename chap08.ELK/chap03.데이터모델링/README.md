@@ -60,8 +60,8 @@
 
 {
     "setting": {
-        "number_of_shards" : 3,
-        "number_of_replicas" : 2
+        "number_of_shards" : 5,
+        "number_of_replicas" : 1  
     },
     "mappings" : {
         "_doc" : {
@@ -74,7 +74,7 @@
                     , "analyzer" : "standard"
                 },
                 "movieNmEn" : {
-                    "type" : "keyword"
+                    "type" : "text"
                     , "analyzer" : "standard"
                 },
                 "prdtYear" : {
