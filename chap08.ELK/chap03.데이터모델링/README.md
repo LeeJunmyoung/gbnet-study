@@ -127,4 +127,17 @@
 ### 매핑확인
 ```
 > GET localhost:9200/movie_search/_mapping
+
+> 매핑 파라미터
+
+1. analzer
+- 해당 필드의 데이터를 형태소 분석하겠다는 의미의 파라미터다. 색인과 검색 시 지정한 분석기로 형태소 분석을 수행.  
+tex데이터 타입의 필드는 analyzer 매핑 파라미터를 기본적으로 사용해야 한다. 별도의 분석기를 지정하지 않으면   
+Standard Analyzer로 형태소 분석을 수행.  
+
+2. normalizer
+- normalizer 매핑 파라미터는 term query에 분석기를 사용하기 위해 사용. 예를 들어 keyword데이터 타입의 경우  
+원문을 기준으로 문서가 색인되기 때문에 cafe, Cafe, Cafe` 는 서로 다른 문서로 인식됨.   
+하지만 해당 유형을 normalizer를 통해 분석기에 asiifolding과 같은 필터를 사용하면 같은 데이터로 인식됨.
+
 ```
