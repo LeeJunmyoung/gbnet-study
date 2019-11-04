@@ -159,4 +159,24 @@ Standard Analyzer로 형태소 분석을 수행.
 다른 필드로 값을 복사하면 복사된 필드에서는 text 타입을 지정해 형태소 분석.
 또한 여러개의 필드 데이터를 하나의 필드에 모아서 전체 검색 용도로 사용하기도 함.  
 이를 통해 과거에 존재하던 _all 칼럼과 동일한 기능을 제공함.
+
+6. fielddata
+- 엘라스틱 서치가 힙 공간에 생성하는 메모리 캐시다. 최신 버전의 엘라스틱 서치는 doc_values라는 새로운  
+형태의캐시를 제공하며, text타입의 필드를 제외한 모든 필드는 기본적으로 doc_values캐시를 사용함.
+flelddata를 사용해야하는 경우는 text타입의 필드는 기본적으로 분석기에 의해 형태소 분석이  
+되기 때문에 집계나 정렬 등의 기능을 수행할 수 없다. 하지만 부득이하게 text타입의 필드에서 집계나  
+정렬을 수행하는 경우도 있을 것이다. 
+* 사용법
+> PUT movie_search_mapping/_mapping/_doc
+
+> Request Body
+{
+    "properties" : {
+        "nationAltEn" : {
+            type: "text"
+            , "fielddata": true
+        }
+    }
+}
+
 ```
