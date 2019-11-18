@@ -371,4 +371,6 @@ keyword 타입을 사용할 경우 별도의 분석기를 거치지 않고 원�
 > 2. 수정한 문장을 개별 토큰으로 분리한다.  
 > 3. 개별 토큰을 특정한 규칙에 의해 변경한다.  
 
-1. 
+1. CHARACTER FILTER
+2. TOKENIZER FILTER
+3. TOKEN FILTER
