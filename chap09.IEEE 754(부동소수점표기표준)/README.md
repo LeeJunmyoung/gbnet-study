@@ -52,3 +52,35 @@ ex) 32bit는 지수부 8비트(0111 1111), 64bit 는 지수부 11비트(011 1111
     - 0 | 0111 1101 | 001 1001 1001 1001 1001 
     ![예시결과](./예시결과.PNG)
 
+4. 자바스크립트 일때....
+    ![예시결과](./자바스크립트더하기예제.PNG)
+5. IF 
+    - KG당 5450원에 최대중량 18.99 라면???
+    * 곱하기/나누기는 더하기에 비해 조금 복잡하다.
+        1. 지수를 같게 조정하지 않는다.
+        2. 가수 끼리 (곱한다/나눈다).
+        3. 지수끼리 (더한다/뺀다).
+        4. 소수이하 자리는 정해진 자리에서 반올림 한다.
+        5. 계산 결과 가수를 정규화한다.
+    * 단순 계산 : 103495.5 , 그렇다면 IEEE 표준에 따른 결과는??
+
+## 해결법.
+```
+> JAVA
+BigDecimal을 사용하자.
+BigDecimal maxKg = new BigDecimal(maxKgStr);
+BigDecimal pricePerKg = new BigDecimal(orderItem.getPricePerKg());
+BigDecimal opt1Price = new BigDecimal(orderItem.getOpt1Price());
+BigDecimal opt2Price = new BigDecimal(orderItem.getOpt2Price());
+BigDecimal opt3Price = new BigDecimal(orderItem.getOpt3Price());
+
+boxAmt = maxKg.multiply(pricePerKg.add(opt1Price).add(opt2Price).add(opt3Price)).setScale(0, BigDecimal.ROUND_HALF_UP).longValueExact();
+* 여기서 중요한건 소수점인 숫자는 String 이어야 한다!!! 
+
+> Javascript 
+0.2 + 0.7 = 0.8999999999999999
+(0.2+0.7).toFixed(2) = 0.90
+자릿수를 계산해서 잘라준다.!
+```
+
+
