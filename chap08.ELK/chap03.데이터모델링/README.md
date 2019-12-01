@@ -400,7 +400,7 @@ PUT /movie_analyzer
 	"analysis": {
 		"custom_movie_analyzer": {
 			"type": "custom"
-			, "char_filter": [
+			, "char_filter": [ 
 				"html_strip"
 			]
 			, "tokenizer": "standard"
@@ -410,4 +410,15 @@ PUT /movie_analyzer
 		}
 	}
 }
+
+[char_filter] html_strip
+전체 텍스트 문장에서 HTML 태그를 제거한다
+
+[tokenizer] standard
+Tokenizer Filter를 정의
+특수문자 혹은 공백을 기준으로 텍스트를 분할
+
+[filter] lowercase
+Token Filter를 정의
+모든 토큰을 소문자로 변환.
 ```
