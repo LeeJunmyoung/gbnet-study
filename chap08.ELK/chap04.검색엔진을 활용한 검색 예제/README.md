@@ -331,3 +331,39 @@ file.json
 주의 !!! \n 단위로 데이터 삽입됨.
 ```
 
+
+### 검색
+```
+# POST http://localhost:9200/meatbox/data/_search
+
+{ 
+    "query":{ 
+        "bool":{ 
+            "must":{ 
+                "multi_match":{ 
+                    "query":"BBQ",
+                    "fields":[ 
+                        "category_name",
+                        "search_all"
+                    ]
+                }
+            },
+            "filter":[ 
+                { 
+                    "term":{ 
+                        "status":"판매중"
+                    }
+                },
+                { 
+                    "range":{ 
+                        "price":{ 
+                            "gte":500
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
+
