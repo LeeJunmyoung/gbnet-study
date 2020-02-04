@@ -160,10 +160,10 @@
 {
 	"properties" : {
         "category_product_seq" : {
-            "type" : "long"
+            "type" : "keyword"
         },
         "category_code" : {
-            "type" : "long"
+            "type" : "keyword"
         },
          "category_name" : {
             "type" : "keyword"
@@ -172,7 +172,7 @@
             "type" : "keyword"
         },
          "product_seq" : {
-            "type" : "long"
+            "type" : "keyword"
         },
          "product_name" : {
             "type" : "text"
@@ -215,7 +215,7 @@
             "type" : "long"
         },
         "review_star_point" : {
-            "type" : "long"
+            "type" : "keyword"
         },
         "last_incomming" : {
             "type" : "keyword"
@@ -317,3 +317,17 @@
 	}
 }
 ```
+
+### 파일 import
+```
+curl -H "Content-Type: application/x-ndjson" -XPOST "localhost:9200/meatbox/data/_bulk?pretty&refresh" --data-binary "@file.json"
+
+file.json
+{"index":{}} \n
+{"category_product_seq":179434,"category_code":10001,"category_name":"소고기 > 한우거세","main_category_yn":"Y","product_seq":156454,"product_name":"등심 - 국산 | 꿈에그린한우 - 1+등급","search_text":"","status":"판매종료","sell_unit_type":"B","keeping":"냉장","origin":"국산","brand":"꿈에그린한우","grade":"1+등급","purpose":"꽃등심|등심|스테이크","sort_ranking":100,"price":62800,"unit_type":"KG","review_cnt":0,"review_star_point":"","last_incomming":"2019-08-08 19:01:06","kind":"한우거세","proc":"원물","item_cat":"등심","item_cat_code":"149","thumbnail_url":"/m/images/itemImage/2019/08/08/19/01/thumb_productThumbnail_71617_20190808190105.jpg","product_url":"-","delivery_price":"무료배송","mark_event_url":"KP01","mark_cert_1_url":"Y","mark_cert_2_url":"N","mark_cert_3_url":"N","mark_cert_4_url":"N","special":"","etc_display_text":"","etc_display_strike_gbn":"N","card_yn":"Y","item_desc":"","search_all":"등심 - 국산 | 꿈에그린한우 - 1+등급 한우거세 원물 등심 냉장 국산 꿈에그린한우 1+등급 꽃등심|등심|스테이크 ","stock_amount":0,"incoming_due_date":"","item_seqs":"","event_msg":"","base_box_cnt":1,"large_purchase_gbn":"N","moddate":"2019-08-10 00:23:00","del_yn":"Y","top_category_seq":1000,"base_sell_yn":"N","sell_member_seq":71617,"meat_loan_yn":"N","regdate":"2019-08-08 19:01:06"} \n
+{"index":{}} \n
+{"category_product_seq":179433,"category_code":10001,"category_name":"소고기 > 한우거세","main_category_yn":"Y","product_seq":156453,"product_name":"등심 - 국산 | 꿈에그린한우 - 1++등급","search_text":"","status":"판매종료","sell_unit_type":"B","keeping":"냉장","origin":"국산","brand":"꿈에그린한우","grade":"1++등급","purpose":"꽃등심|등심|스테이크","sort_ranking":100,"price":72500,"unit_type":"KG","review_cnt":0,"review_star_point":"","last_incomming":"2019-08-08 18:59:35","kind":"한우거세","proc":"원물","item_cat":"등심","item_cat_code":"149","thumbnail_url":"/m/images/itemImage/2019/08/08/18/59/thumb_productThumbnail_71617_20190808185934.jpg","product_url":"-","delivery_price":"무료배송","mark_event_url":"KP01","mark_cert_1_url":"Y","mark_cert_2_url":"N","mark_cert_3_url":"N","mark_cert_4_url":"N","special":"","etc_display_text":"","etc_display_strike_gbn":"N","card_yn":"Y","item_desc":"","search_all":"등심 - 국산 | 꿈에그린한우 - 1++등급 한우거세 원물 등심 냉장 국산 꿈에그린한우 1++등급 꽃등심|등심|스테이크 ","stock_amount":0,"incoming_due_date":"","item_seqs":"","event_msg":"","base_box_cnt":1,"large_purchase_gbn":"N","moddate":"2019-08-17 20:50:04","del_yn":"Y","top_category_seq":1000,"base_sell_yn":"N","sell_member_seq":71617,"meat_loan_yn":"N","regdate":"2019-08-08 18:59:35"} \n
+
+주의 !!! \n 단위로 데이터 삽입됨.
+```
+
