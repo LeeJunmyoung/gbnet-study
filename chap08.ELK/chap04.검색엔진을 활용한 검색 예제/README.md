@@ -36,7 +36,10 @@
 }
 
 # conf/user_dictionary.txt
-동물원 축제
+동물원축제 동물원 축제
+현대그린푸드 현대 그린 푸드
+
+한줄에 해당하는 형태로만 넣어주어야함!!
 ```
 #### 샤드와 레플리카  
 ![참고 사이트](https://www.kdata.or.kr/info/info_04_view.html?field=&keyword=&type=techreport&page=29&dbnum=180207&mode=detail&type=techreport)
