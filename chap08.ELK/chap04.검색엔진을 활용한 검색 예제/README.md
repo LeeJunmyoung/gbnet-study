@@ -42,7 +42,7 @@
 한줄에 해당하는 형태로만 넣어주어야함!!
 ```
 #### 샤드와 레플리카  
-![참고 사이트](https://www.kdata.or.kr/info/info_04_view.html?field=&keyword=&type=techreport&page=29&dbnum=180207&mode=detail&type=techreport)
+[참고 사이트][https://www.kdata.or.kr/info/info_04_view.html?field=&keyword=&type=techreport&page=29&dbnum=180207&mode=detail&type=techreport]
 #### decompound_mode
 1. none : 복합 명사로 분리하지 않음. ex 명동역 => 명동역
 2. discard : 복합 명사로 분리하고 원본 데이터는 삭제. ex 명동역 => 명동, 역
