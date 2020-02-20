@@ -18,6 +18,7 @@ GET movie_search/_search?q=prdtYear:2018
 * movieNmEn 필드에 Family가 포함된 모든 문서를 검색하는 예
 GET movie_search/_search?q=movieNmEn:Family
 
+EX1)
 GET movie_search/_search
 ?q=movieNmEn:* AND prdtYear:2017                    1. 필드에 대한 쿼리 
 &analyze_wildcard=true                              2. 와일드 카드 옵션 활성화
@@ -61,4 +62,33 @@ POST movie_search/_search
         }
     }
 }
+
+EX1)
+POST movie_search/_search
+{
+    "query" : {
+        "query_string" : {
+            "default_field" : "movieNmEn"
+            , "query" : "movieNmEn:* OR prdtYear:2017"
+        }
+    }
+    , "from" : 0
+    , "size" : 5
+    , "sort" : [
+        {
+            "_score" : {
+                "order" : "desc"
+            }
+            , "movieCd" : {
+                "order" : "asc"
+            }
+        }
+    ]
+    , "_source" : [
+        "movieCd"
+        , "movieNm"
+        , "movieNmEn"
+        , "typeNm"
+    ]
+} 
 ```
