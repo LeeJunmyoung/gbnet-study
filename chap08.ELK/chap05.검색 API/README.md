@@ -14,8 +14,23 @@
 #### URI검색
 ```
 GET movie_search/_search?q=prdtYear:2018
+
+* movieNmEn 필드에 Family가 포함된 모든 문서를 검색하는 예
+GET movie_search/_search?q=movieNmEn:Family
 ```
-  
+| 파라미터 | 기본값 | 설명 |
+|---|:---:|---:|
+| `q` | - | 검색을 수행할 쿼리 문자열 조건 지정 |
+| `df` | - | 쿼리에 검색을 수행할 필드가 지정되지 않을 경우 기본값으로 검색할 필드를 지정. |
+| `analyzer` | 검색 대상 필드에 설정된 형태소 분석기 | 쿼리 문자열을 형태소 분석할 때 사용할 형태소 분석기 지정 |
+| `analyze_wildcard` | false | 접두어/ 와일드 카드 검색 활성화 여부 |
+| `default_operator` | OR | 두개 이상의 검색 조건이 쿼리 문자열에 포함된 경우 검색 조건 연산자 |
+| `_source_` | true | 검색 결과에 문서 본문 포함 여부를 지정 |
+| `sort` | - | 검색 결과의 정렬 기준 필드를 지정 |
+| `from` | - | 검색을 시작할 문서의 위치 |
+| `size` | - | 반환할 검색 결과 개수 |
+
+
 #### Request Body 검색
 ```
 POST movie_search/_search
