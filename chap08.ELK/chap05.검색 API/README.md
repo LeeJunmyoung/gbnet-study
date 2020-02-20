@@ -11,3 +11,9 @@
 > URI검색  
 > Request Body 검색
 
+#### URI검색
+```
+GET movie_search/_search?q=prdtYear:2018
+```
+  
+#### Request Body 검색
