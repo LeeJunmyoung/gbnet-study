@@ -17,6 +17,14 @@ GET movie_search/_search?q=prdtYear:2018
 
 * movieNmEn 필드에 Family가 포함된 모든 문서를 검색하는 예
 GET movie_search/_search?q=movieNmEn:Family
+
+GET movie_search/_search
+?q=movieNmEn:* AND prdtYear:2017                    1. 필드에 대한 쿼리 
+&analyze_wildcard=true                              2. 와일드 카드 옵션 활성화
+&from=0                                             3. 페이징을 위한 시작값 설정
+&size=5                                             4. 사이즈 설정      
+&sort=_score:desc,movieCd:asc                       5. 결과 정렬
+&_source_includes=movieCd,movieNm,movieNmEn,typeNm  6. 포함할 _source 필드명
 ```
 | 파라미터 | 기본값 | 설명 |
 |---|:---:|---:|
