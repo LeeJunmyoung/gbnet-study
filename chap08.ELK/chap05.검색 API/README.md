@@ -50,4 +50,15 @@ POST movie_search/_search
         }
     }
 }
+
+* movieNmEn 필드에 Family가 포함된 모든 문서를 검색하는 예
+POST movie_search/_search
+{
+    "query" : {
+        "query_string" : {
+            "default_field" : "movieNmEn"
+            , "query" : "Family"
+        }
+    }
+}
 ```
