@@ -17,3 +17,14 @@ GET movie_search/_search?q=prdtYear:2018
 ```
   
 #### Request Body 검색
+```
+POST movie_search/_search
+
+{
+    "query" : {
+        "term" : {
+            "prdtYear" : "2018"
+        }
+    }
+}
+```
