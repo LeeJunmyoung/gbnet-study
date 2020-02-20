@@ -346,7 +346,7 @@ keyword 타입을 사용할 경우 별도의 분석기를 거치지 않고 원�
     6. ip_range : ipv4, ipv6주소를 지원하는 ip값
 
 7. Boolean 데이터 타입
-- 찺 거짓이라는 두 논리값을 가지는 데이터 타입.
+- 참 거짓이라는 두 논리값을 가지는 데이터 타입.
 
 8. geo-point 데이터 타입
 - 위도, 경도 등 위치 정보를 담은 데이터를 저장할때 사용.
@@ -421,4 +421,16 @@ Tokenizer Filter를 정의
 [filter] lowercase
 Token Filter를 정의
 모든 토큰을 소문자로 변환.
+
+<B>Elasticsearch</B> is cool
+-> Character Filter : html_strip에 의해 html 제거
+Elasticsearch is cool
+-> Tokenizer : standard 토크나이저로 term 분리
+Elasticsearch -> Token 1, Position 1
+is -> Token 2, Position 2
+cool -> Token 3, Position 3
+-> Token Filter : lowercase 필터로 소문자 처리
+elasticsearch -> Token 1, Position 1
+is -> Token 2, Position 2
+cool -> Token 3, Position 3
 ```
