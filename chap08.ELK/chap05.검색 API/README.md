@@ -204,3 +204,20 @@ POST movie_search/_search
     }
 }
 ```
+
+4. _source 필드
+> 검색 요청 시 _source에 검색 결과에 포함하고 싶은 필드를 지정  
+```
+POST movie_search/_search
+{
+    "_source" : [
+        "movieNm" -- movieNm 필드만 출력됨
+    ],
+    "query" : {
+        "term" : {
+            "repGenreNm" : "다큐멘터리"
+        }
+    }
+}
+```
+
