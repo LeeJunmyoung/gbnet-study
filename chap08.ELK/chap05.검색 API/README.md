@@ -222,6 +222,7 @@ POST movie_search/_search
 ```
 
 5. 범위 검색  
+
 |문법|연산자|설명|
 |:---:|:---:|---|
 | lt | < | 피연산보다 작음 |
@@ -260,4 +261,20 @@ POST movie_search/_search
 }
 # operator 파라미터를 생략하면 OR연산을 통해 '해리포터', '마법'이 들어간 모든 단어를 검색  
 # "and"값을 명시해 두개의 텀이 모두 존재하는 문서만 결과로 제공.
+```
+
+7 minimum_should_match  
+> OR 연산을 수행할 경우에 사용할 수 있는 옵션  
+> 텀의 개수가 몇 개 이상 매칭 될때만 결과로 나오게 할 수 있음.  
+```
+{
+    "query" : {
+        "match" : {
+            "movieNm" : {
+                "query" : "해리포터 마법",
+                "minimum_should_match" : 2
+            }
+        }
+    }
+}
 ```
