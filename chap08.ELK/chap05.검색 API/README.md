@@ -230,7 +230,7 @@ POST movie_search/_search
 |gte|>=|피연산자보다 크거나 같다|
 ```
 POST movie_search/_search
-```
+
 {
     "query" : {
         "range" : {
@@ -242,4 +242,22 @@ POST movie_search/_search
     }
 }
 ```
+
+6. operator
+> 엘라스틱 서치는 검색 시 문장이 들어올 경우 기본적으로 OR연산으로 동작.  
+> 하지만, AND연산을 사용해 정확도를 높여 검색해야 할 때가 많다.  
+```
+POST movie_search/_search
+{
+    "query" : {
+        "match" : {
+            "movieNm" : {
+                "query" : "해리포터 마법",
+                "operator" : "and"
+            }
+        }
+    }
+}
+# operator 파라미터를 생략하면 OR연산을 통해 '해리포터', '마법'이 들어간 모든 단어를 검색  
+# "and"값을 명시해 두개의 텀이 모두 존재하는 문서만 결과로 제공.
 ```
