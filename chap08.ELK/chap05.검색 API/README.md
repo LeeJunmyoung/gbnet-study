@@ -298,3 +298,15 @@ POST movie_search/_search
 }
 ```
 
+9. boost
+> 관련성이 높은 필드나 키워드에 가중치를 더 줄 수 있다.  
+```
+{
+    "query" : {
+        "multi_match" : {
+            "query" : "fly",
+            "fields" : ["movieNm^3", "movieNmEn"]
+        }
+    }
+}
+```
