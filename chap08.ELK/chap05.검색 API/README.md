@@ -139,3 +139,68 @@ POST movie_search/_search
     }
 }
 ```
+
+#### 쿼리 DSL 파라미터 옵션
+
+1. Multi Index 검색
+> 검색 요청시 ","를 이용해 다수의 익덱스를 검색할 수 있다.   
+> "*"를 와일드 카드로 사용할 수 있다.  
+```
+POST movie_search,movie_auto/_search
+{
+    "query" : {
+        "term" : {
+            "repGenreNm" : "다큐멘터리"
+        }
+    }
+}
+
+POST log-*/_search
+```
+
+2. 페이징
+```
+# 첫 번째 페이지
+POST movie_search/_search
+{
+    "from" : 0,
+    "size" : 5,
+    "query" : {
+        "term" : {
+            "repGenreNm" : "다큐멘터리"
+        }
+    }
+}
+
+# 첫 번째 페이지
+POST movie_search/_search
+{
+    "from" : 5,
+    "size" : 5,
+    "query" : {
+        "term" : {
+            "repGenreNm" : "다큐멘터리"
+        }
+    }
+}
+```
+
+3. 정렬
+```
+POST movie_search/_search
+{
+    "query" : {
+        "term" : {
+            "repGenreNm" : "다큐멘터리"
+        }
+    },
+    "sort" : {
+        "prdtYear" : {
+            "order" : "asc"  -- 1번째 정렬조건
+        },
+        "_score" : {
+            "order" : "desc" -- 2번째 정렬조건
+        }
+    }
+}
+```
