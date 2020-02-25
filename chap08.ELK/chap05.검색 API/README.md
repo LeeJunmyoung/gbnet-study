@@ -340,3 +340,18 @@ POST /movie_search/_search
 # "그대 장미" 라는 검색어를 형태소 분석을 통해 "그대", "장미" 2개의 텀으로 분리 후
 # 별도의 operator필드가 지정되어 있지 않아 OR연산을 이용해 검색을 수행
 ```
+
+3. multi match
+> match 쿼리와 기본적인 사용 방법은 동일하나 단일 필드가 아닌 여러 개의 필드를 대상으로 검색해야 할때 사용하는 쿼리.  
+
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "multi_match" : {
+            "query" : "가족"
+            , "fields" : ["movieNm", "movieNmEn"]
+        }
+    }
+}
+```
