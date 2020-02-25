@@ -419,3 +419,34 @@ POST /movie_search/_search
 # 대표장르가 "코미디" 이며 제작국가에 "한국"이 포함되 있으며,
 # 영화타입 중 "단편"이 제외된 문서 조회.
 ```
+
+6. query string
+> 기존 term 쿼리와 다르게 공백은 연산자로 사용되지 않으며,   
+> 입력된 텍스트 그대로 형태소 분석기에 전달 됨.  
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "query_string" : {
+            "default_field" : "(new york city) OR (big apple)",
+            "query" : "(가정) AND (어린이 날)"
+        }
+    }
+}
+# "new york city" 과 "big apple"이 각각 형태소 분석기를 통해 분석.
+# 분석된 텀을 대상으로 AND 조건과 만족하는 문서를 찾아 줌.
+```
+
+7. prefix
+> 해당 접두어가 있는 모든 문서를 검색.  
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "prefix" : {
+            "movieNm" : "해리포터"
+        }
+    }
+}
+# 영화 이름이 해리포터로 시작하는 영화 데이터를 찾아 줌. 
+```
