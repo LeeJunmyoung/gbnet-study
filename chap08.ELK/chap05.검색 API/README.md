@@ -310,3 +310,33 @@ POST movie_search/_search
     }
 }
 ```
+
+#### 쿼리 DSL 주요 쿼리
+
+1. match all
+> match_all 파라미터는 색인에 모든 문서를 검색하는 쿼리.  
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "match_all" : {}
+    }
+}
+```
+
+2. match
+> match는 텍스트, 숫자, 날짜 등이 포함된 문장을 형태소 분석을 통해 텀으로 분리한 후    
+>텀을 이용해 검색질의를 수행.  
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "match" : {
+            movieNm : "그대 장미"
+        }
+    }
+}
+
+# "그대 장미" 라는 검색어를 형태소 분석을 통해 "그대", "장미" 2개의 텀으로 분리 후
+# 별도의 operator필드가 지정되어 있지 않아 OR연산을 이용해 검색을 수행
+```
