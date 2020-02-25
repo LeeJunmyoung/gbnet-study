@@ -450,3 +450,132 @@ POST /movie_search/_search
 }
 # 영화 이름이 해리포터로 시작하는 영화 데이터를 찾아 줌. 
 ```
+
+8. exists 
+> 문서를 색인 시 필드의 값이 없다면 필드를 생성하지 않거나 필드의 값을 null로 설정할 때가 있다.  
+> 이러한 데이터를 제외하고 실제값이 존재하는 문서를 찾아 줌.  
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "exits" : {
+            "field" : "movieNm"
+        }
+    }
+}
+# movieNm 칼럼에 값이 존재하는 문서만 찾음
+# 필드의 값이 null이거나 필드 자체가 없는 문서를 찾고 싶다면 must_not을 이용.
+```
+
+9. wildcard
+> 검색어가 와일드 카드와 일치하는 구문을 찾음.  
+> 이때 검색에는 형태소 분석이 이뤄지지 않음.  
+
+|와일드카드 옵션|설명|
+|:---:|---|
+|*|문자의 길이와 상관없이 와일드 카드와 일치하는 모든 문서 검색|
+|?|지정된 위치의 한 글자가 다른 경우의 문서를 찾음|
+```
+POST /movie_search/_search
+{
+    "query" : {
+        "wildcard" : {
+            "typeNm" : "?편"
+        }
+    }
+}
+# typeNm필드의 'X편' 를 찾기 위해 다음과 같이 와일드카드 사용 (장편, 단편)
+```
+
+10. nested
+> 부모 / 자식 관계의 형태로 모델링 되는 경우   
+> SQL 조인과 유사한 기능을 수행하는 nested query 제공  
+> nested 데이터 타입의 필드를 검색할 때 사용.  
+```
+# nested 구조의 인덱스 생성
+PUT /movie_nested
+{
+    "setting": {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 2
+    },
+    "mappings" : {
+        "_doc" : {
+            "properties" : {
+                "movieCd" :         { "type" : "integer"    },
+                "movieNm" :         { "type" : "text"       },
+                "movieNmEn" :       { "type" : "text"       },
+                "prdtYear" :        { "type" : "integer"    },
+                "openDt" :          { "type" : "date"       },
+                "typeNm" :          { "type" : "keyword"    },
+                "prdtStatNm" :      { "type" : "keyword"    },
+                "nationAlt" :       { "type" : "keyword"    },
+                "genreAlt" :        { "type" : "keyword"    },
+                "repNationNm" :     { "type" : "keyword"    },
+                "repGenreNm" :      { "type" : "keyword"    },
+                "companies" : {
+                    "type" : "nested",
+                    "properties" : {
+                        "companyCd" : { "type" : "keyword"    },
+                        "companyNm" : { "type" : "keyword"    }
+                    }
+                }
+            }
+        }
+    }
+}
+
+# 문서 생성
+> POST /movie_nested/_doc/1
+{
+	"movieCd"       : "1",
+	"movieNm"       : "살아남은아이",
+	"movieNeEn"     : "Last Child",
+	"prdtYear"      : "2017",
+	"openDt"        : "2017-10-24",
+	"typeNm"        : "장편",
+	"prdtStatNm"    : "기타",
+	"nationAlt"     : "한국",
+	"genreAlt"      : "드라마,가족",
+	"repNationNm"   : "한국",
+	"repGenreNm"    : "드라마",
+    "companies" :[
+        {
+            "companyCd" : "123456",
+            "companyNm" : "(주) 행복하자"
+        }
+    ]
+}
+
+# nested query
+POST /movie_nested/_search
+{
+    "query" : {
+        "bool" : {
+            "must" : [
+                {
+                    "term" : {
+                        "repGenreNm" : "드라마"
+                    }
+                },
+                {
+                    "nested" : {
+                        "path" : "companies",
+                        "query" : {
+                            "bool" : {
+                                "must" : [
+                                    {
+                                        "term" : {
+                                            "companies.companyCd": "123456"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
+```
