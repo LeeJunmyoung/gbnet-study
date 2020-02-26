@@ -603,11 +603,76 @@ PUT /_cluster/settings
 ```
 
 2. 글로벌 타임아웃 설정
+> 기본정책은 -1(무제한) 이다.
 ```
 PUT /_cluster/settings
 {
     "transient" : {
         "search.default_search_timeout" : "1s"
     }
+}
+```
+
+#### Search Shards API
+> 노드 및 샤드에 대한 정보를 확인 할 수 있음.
+```
+GET /movie_search/_search_shards
+
+# 인덱스 정보 확인.
+```
+
+#### Count API
+> 검색된 문서의 개수만 가져올 수 있다.
+```
+GET  /movie_search/_count?q=~~
+
+POST /movie_search/_count
+{
+    "query" : {
+        "wildcard" : {
+            "typeNm" : "?편"
+        }
+    }
+}
+```
+
+#### Validate API
+> 쿼리가 유효하게 작성됐는지 검증 가능
+```
+POST /movie_search/_validate/query
+{
+    "query" : {
+        "wildcard" : {
+            "typeNm" : "?편"
+        }
+    }
+}
+```
+
+#### Explain API
+> 문서 검색 결과를 확인해 보면 _scoure를 통해 검색한 키워드와 검색 결과가 얼마나 유사한지 확인 할 수 있다.  
+> _score 값이 어떻게 꼐산된 것인지 자세한 정보를 알수 있다.    
+> 조회한 문서의 ID로 스코어값이 어떻게 계산됬는지 확인 가능하다.
+```
+POST /movie_search/_doc/9/_explain
+{
+    "query" : {
+        "term" : {
+            "prdtYear" : 2017
+        }
+    }
+}
+```
+
+#### Profile API
+> 쿼리에 대한 상세한 수행 계획과 각 수행 계획별로 수행된 시간을 알려주므로 성능 튜닝 과 디버깅에 유용함.
+```
+POST /movie_search/_search
+{
+    "profile" : true,
+    "query" : {
+        "match_all" : {}
+    }
+
 }
 ```
