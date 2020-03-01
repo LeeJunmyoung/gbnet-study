@@ -89,3 +89,36 @@ GET /apache-web-log/_search?size=0
     }
 }
 ```
+
+## 최솟값 집계
+> Min 기능.  
+
+```
+{
+    "aggs" : {
+        "min_bytes" : {
+            "min" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+
+GET /apache-web-log/_search?size=0
+{
+    "query" : {
+        "constant_score" : {
+            "filter" : {
+                "match" : { "geoip.city_name" : "paris" }
+            }
+        }
+    },
+    "aggs" : {
+        "min_bytes" : {
+            "min" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+```
