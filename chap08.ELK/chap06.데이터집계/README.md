@@ -51,3 +51,41 @@
     }
 }
 ```
+
+## 합산 집계
+> Sum 기능.
+
+```
+# 얼마만큼에 BYTE 가 들어왔는지 확인 가능
+# 질의가 명시 되지 않아 전체 검색 size=0 이기 때문에 결과 집합에 문서들 또한 존재 X
+# 결과 문서가 출력되지 않더라도 실제 검색된 문서의 대상범위가 전체 문서이기 때문에 집계는 전체문서에 대해 수행.  
+GET /apache-web-log/_search?size=0
+
+{
+    "aggs" : {
+        "total_bytes" : {
+            "sum" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+
+GET /apache-web-log/_search?size=0
+{
+    "query" : {                    
+        "constant_score" : {        -- 필터에 해당하는 문서들에 대해 동일한 스코어 부여
+            "filter" : {
+                "match" : {"geoip.city_name" : "paris"}
+            }
+        }
+    },
+    "aggs" : {
+        "total_bytes" : {
+            "sum" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+```
