@@ -17,3 +17,37 @@
     "aggs" : {....}
 }
 ```
+
+### 집계구문 구조
+```
+"aggregations":{                        -- 데이터 집계하기 우해 맨 처음 명시해야함. aggs로 줄여서 쓰는것도 가능
+    "<aggregation_name>":{              -- 하위 집계의 이름을 기입. 이름은 집계 결과 출력에 사용 따라서 사용자가 직접 임의의 이름 정의 
+        "<aggregation_type>":{          -- 집계의 유형을 적음. 어떤 집계를 수행할 것인가를 나타냄. terms, data_histogram,sum 과 같은 다양한 집계유형 지정가능
+            "<aggregation_body>"        -- aggregation_type에 맞춰 내용을 작성
+        }
+        [,"meta":{[<meta_data_body>]}]?
+        [,"aggregations":{[<sub_aggregation>]+}]?
+    }
+    ,[,"<aggregation_name_2>:{...}"]*
+}
+```
+
+### 집계 영역
+```
+{
+    "query" : {         -- 쿼리의 질의를 수행 , 필드와 값이 일치하는 문서만 반환
+        "constant_score" : {
+            "filter" : {
+                "match" : <필드조건>
+            }
+        }  
+    },
+    "aggs" : {          -- 질의를 통해 반환 받은 문서들의 집합 내에서 집계를 수행
+        "<집계이름>" : {
+            "<집계타입>" : {
+                "field" : "<필드명>"
+            }
+        }
+    }
+}
+```
