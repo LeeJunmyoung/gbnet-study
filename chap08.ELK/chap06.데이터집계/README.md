@@ -52,7 +52,7 @@
 }
 ```
 
-## 합산 집계
+## 합산 집계 (sum)
 > Sum 기능.
 
 ```
@@ -90,7 +90,7 @@ GET /apache-web-log/_search?size=0
 }
 ```
 
-## 최솟값 집계
+## 최솟값 집계 (min)
 > Min 기능.  
 
 ```
@@ -116,6 +116,72 @@ GET /apache-web-log/_search?size=0
     "aggs" : {
         "min_bytes" : {
             "min" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+```
+
+## 최댓값 집계 (max)
+> Max 기능  
+
+```
+{
+    "aggs" : {
+        "max_bytes" : {
+            "max" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+
+GET /apache-web-log/_search?size=0
+{
+    "query" : {
+        "constant_score" : {
+            "filter" : {
+                "match" : { "geoip.city_name" : "paris" }
+            }
+        }
+    },
+    "aggs" : {
+        max_bytes" : {
+            "max" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+```
+
+## count 집계 (value_count)
+> Count 기능
+
+```
+{
+    "aggs" : {
+        "bytes_count" : {
+            "value_count" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+
+GET /apache-web-log/_search?size=0
+{
+    "query" : {
+        "constant_score" : {
+            "filter" : {
+                "match" : { "geoip.city_name" : "paris" }
+            }
+        }
+    },
+    "aggs" : {
+        bytes_count" : {
+            "value_count" : {
                 "field" : "bytes"
             }
         }
