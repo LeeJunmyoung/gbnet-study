@@ -90,6 +90,39 @@ GET /apache-web-log/_search?size=0
 }
 ```
 
+## 평균 집계 (avg)
+> Avg 기능.  
+
+```
+{
+    "aggs" : {
+        "min_bytes" : {
+            "avg" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+
+GET /apache-web-log/_search?size=0
+{
+    "query" : {
+        "constant_score" : {
+            "filter" : {
+                "match" : { "geoip.city_name" : "paris" }
+            }
+        }
+    },
+    "aggs" : {
+        "avg_bytes" : {
+            "avg" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+```
+
 ## 최솟값 집계 (min)
 > Min 기능.  
 
@@ -182,6 +215,39 @@ GET /apache-web-log/_search?size=0
     "aggs" : {
         bytes_count" : {
             "value_count" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+```
+
+## 통계 집계
+> sum, avg, max, min, count한번에 쿼리로 집계.
+
+```
+{
+    "aggs" : {
+        "bytes_stats" : {
+            "stats" : {
+                "field" : "bytes"
+            }
+        }
+    }
+}
+
+GET /apache-web-log/_search?size=0
+{
+    "query" : {
+        "constant_score" : {
+            "filter" : {
+                "match" : { "geoip.city_name" : "paris" }
+            }
+        }
+    },
+    "aggs" : {
+        bytes_stats" : {
+            "stats" : {
                 "field" : "bytes"
             }
         }
