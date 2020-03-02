@@ -254,3 +254,19 @@ GET /apache-web-log/_search?size=0
     }
 }
 ```
+
+## 텀즈 집계
+> 집계 시 지정한 필드에 대해 빈도수가 높은 텀의 순위로 결과를 반환.  
+
+```
+GET /apache-web-log/_search?size=0
+{
+    "aggs" : {
+        "request count by country" : {
+            "term" : {
+                "field" : "geoip.country_name.keyword"
+            }
+        }
+    }
+}
+```
