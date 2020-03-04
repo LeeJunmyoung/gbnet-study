@@ -72,5 +72,58 @@ bin/elasticsearch-plugin install analysis-nori
     - 잠실 , 역 , 잠실역
     ```
 
+#### 2. nori_part_of_speech
+> nori_part_of_speech 토큰 필터는 품사 태그 세트와 일치하는 토큰을 찾아 제거하는 토큰 필터.  
+> 역색인될 명사를 선택적으로 고를 수 있음. 이를 통해 미사용할 형태소를 제거.  
+> 해당 토큰 필터는 stoptags라는 파라미터를 제공하는데, 이 파라미터를 이용해 분리된 토큰에서 제거할 특정 형태소를 지정하는것이 가능.  
+
+```
+# 토큰 필터를 추가하기 위해 이미 생성된 설정정보를 변경하려면 인덱스를 close 상태로 만들어야 함.
+POST /{index}/_close
+
+# stoptags에 명사를 제외한 모든 형태소를 제거하도록 설정.
+PUT /{index}/_settings
+{
+    "index" : {
+        "analysis" : {
+            "analyzer" : {
+                "nori_token_analyzer" : {
+                    "tokenizer" : "nori_user_dict_tokenizer",
+                    "filter" : [
+                        "nori_posfilter"
+                    ]
+                }
+            },
+            "filter" : {
+                "nori_posfilter" : {
+                    "type" : "nori_part_of_speech",
+                    "stoptags" : [
+                        "E",
+                        "IC",
+                        "J",
+                        ...
+                    ]
+                }
+            }
+        }
+    }
+}
+
+# default filter
+"stoptags": [
+    "E",
+    "IC",
+    "J",
+    "MAG", "MAJ", "MM",
+    "SP", "SSC", "SSO", "SC", "SE",
+    "XPN", "XSA", "XSN", "XSV",
+    "UNA", "NA", "VSV"
+]
+
+# 설정 정보가 업데이트 되면 인덱스를 다시 Open
+POST /{index}/_open
+```
+
+[필터 파라미터](https://lucene.apache.org/core/8_4_0/analyzers-nori/org/apache/lucene/analysis/ko/POS.Tag.html)
 
 
