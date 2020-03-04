@@ -72,58 +72,67 @@ bin/elasticsearch-plugin install analysis-nori
     - 잠실 , 역 , 잠실역
     ```
 
-#### 2. nori_part_of_speech
-> nori_part_of_speech 토큰 필터는 품사 태그 세트와 일치하는 토큰을 찾아 제거하는 토큰 필터.  
-> 역색인될 명사를 선택적으로 고를 수 있음. 이를 통해 미사용할 형태소를 제거.  
-> 해당 토큰 필터는 stoptags라는 파라미터를 제공하는데, 이 파라미터를 이용해 분리된 토큰에서 제거할 특정 형태소를 지정하는것이 가능.  
+    #### 2. nori_part_of_speech
+    > nori_part_of_speech 토큰 필터는 품사 태그 세트와 일치하는 토큰을 찾아 제거하는 토큰 필터.  
+    > 역색인될 명사를 선택적으로 고를 수 있음. 이를 통해 미사용할 형태소를 제거.  
+    > 해당 토큰 필터는 stoptags라는 파라미터를 제공하는데, 이 파라미터를 이용해 분리된 토큰에서 제거할 특정 형태소를 지정하는것이 가능.  
 
-```
-# 토큰 필터를 추가하기 위해 이미 생성된 설정정보를 변경하려면 인덱스를 close 상태로 만들어야 함.
-POST /{index}/_close
+    ```
+    # 토큰 필터를 추가하기 위해 이미 생성된 설정정보를 변경하려면 인덱스를 close 상태로 만들어야 함.
+    POST /{index}/_close
 
-# stoptags에 명사를 제외한 모든 형태소를 제거하도록 설정.
-PUT /{index}/_settings
-{
-    "index" : {
-        "analysis" : {
-            "analyzer" : {
-                "nori_token_analyzer" : {
-                    "tokenizer" : "nori_user_dict_tokenizer",
-                    "filter" : [
-                        "nori_posfilter"
-                    ]
-                }
-            },
-            "filter" : {
-                "nori_posfilter" : {
-                    "type" : "nori_part_of_speech",
-                    "stoptags" : [
-                        "E",
-                        "IC",
-                        "J",
-                        ...
-                    ]
+    # stoptags에 명사를 제외한 모든 형태소를 제거하도록 설정.
+    PUT /{index}/_settings
+    {
+        "index" : {
+            "analysis" : {
+                "analyzer" : {
+                    "nori_token_analyzer" : {
+                        "tokenizer" : "nori_user_dict_tokenizer",
+                        "filter" : [
+                            "nori_posfilter"
+                        ]
+                    }
+                },
+                "filter" : {
+                    "nori_posfilter" : {
+                        "type" : "nori_part_of_speech",
+                        "stoptags" : [
+                            "E",
+                            "IC",
+                            "J",
+                            ...
+                        ]
+                    }
                 }
             }
         }
     }
-}
 
-# default filter
-"stoptags": [
-    "E",
-    "IC",
-    "J",
-    "MAG", "MAJ", "MM",
-    "SP", "SSC", "SSO", "SC", "SE",
-    "XPN", "XSA", "XSN", "XSV",
-    "UNA", "NA", "VSV"
-]
+    # default filter
+    "stoptags": [
+        "E",
+        "IC",
+        "J",
+        "MAG", "MAJ", "MM",
+        "SP", "SSC", "SSO", "SC", "SE",
+        "XPN", "XSA", "XSN", "XSV",
+        "UNA", "NA", "VSV"
+    ]
 
-# 설정 정보가 업데이트 되면 인덱스를 다시 Open
-POST /{index}/_open
-```
+    # 설정 정보가 업데이트 되면 인덱스를 다시 Open
+    POST /{index}/_open
+    ```
 
-[필터 파라미터](https://lucene.apache.org/core/8_4_0/analyzers-nori/org/apache/lucene/analysis/ko/POS.Tag.html)
+    [필터 파라미터](https://lucene.apache.org/core/8_4_0/analyzers-nori/org/apache/lucene/analysis/ko/POS.Tag.html)
 
 
+    #### 3. nori_readingform 토큰 필터
+    > nori_readingform 토큰 필터는 문서에 존재하는 한자를 한글로 변경하는 역할을 하는 필터.    
+
+
+### 트위터 형태소 분석기
+> 트위터 형태소 분석기는 트위터에서 한글을 처리하기 위해 개발한 형태소 분석기.  
+> 초기에는 트위터에서 직접 개발했으나 2017년 4.4버전 이후로는 openkoreatext.org로 이관되어 오픈소스로 개발되고 있음.  
+> 한글 형태소 분석 및 스테밍이 가능 (reduce , reducing, reduced)  
+> 장점은 정규화, 토큰화, 스테밍, 어구 추출이 가능.  
