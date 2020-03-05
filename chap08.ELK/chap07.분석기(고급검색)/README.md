@@ -136,3 +136,5 @@ bin/elasticsearch-plugin install analysis-nori
 > 초기에는 트위터에서 직접 개발했으나 2017년 4.4버전 이후로는 openkoreatext.org로 이관되어 오픈소스로 개발되고 있음.  
 > 한글 형태소 분석 및 스테밍이 가능 (reduce , reducing, reduced)  
 > 장점은 정규화, 토큰화, 스테밍, 어구 추출이 가능.  
+
+##  검색 결과 하이라이트
