@@ -137,4 +137,29 @@ bin/elasticsearch-plugin install analysis-nori
 > 한글 형태소 분석 및 스테밍이 가능 (reduce , reducing, reduced)  
 > 장점은 정규화, 토큰화, 스테밍, 어구 추출이 가능.  
 
-##  검색 결과 하이라이트
+##  검색 결과 하이라이트  
+> 데이터를 검색할 때 highlight 옵션을 이용해 하이라이트를 수행할 필드를 지정.  
+
+```
+POST /movie/_search
+{
+    "query" : {
+        "match" : {
+            "title" : {
+                "query" : "query"
+            }
+        },
+        "hightlight" : {
+            "field" : {
+                "title" : {}
+            },
+            "pre_tags" : [
+                "<strong>"
+            ],
+            "post_tags" : [
+                "</strong>"
+            ]
+        }
+    }
+}
+```
