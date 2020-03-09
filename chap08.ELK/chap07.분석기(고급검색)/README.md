@@ -141,7 +141,7 @@ bin/elasticsearch-plugin install analysis-nori
 > 데이터를 검색할 때 highlight 옵션을 이용해 하이라이트를 수행할 필드를 지정.  
 
 ```
-POST /movie/_search
+POST /{index}/_search
 {
     "query" : {
         "match" : {
@@ -161,5 +161,20 @@ POST /movie/_search
             ]
         }
     }
+}
+```
+
+## 동적 필드 수정
+```
+# 필드 추가
+POST /{index}/doc/{id}/_update
+{
+    "script" : "ctx._source.{field_name} = {value}"
+}
+
+# 필드 제거
+POST /{index}/doc/{id}/_update
+{
+    "script" : "ctx._source.remove(\"{field_name}\")"
 }
 ```
