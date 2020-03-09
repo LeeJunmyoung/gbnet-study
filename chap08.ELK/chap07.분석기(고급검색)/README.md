@@ -178,3 +178,31 @@ POST /{index}/doc/{id}/_update
     "script" : "ctx._source.remove(\"{field_name}\")"
 }
 ```
+
+## 검색 템플릿
+> 검색 템플릿의 필드명과 파라미터를 사용해 쿼리를 전송하고 템플릿에 제공한 파라미터로 실제 검색이 이뤄짐. 검색 템플릿은 mustache라는 템플릿을 사용
+```
+# 검색 템플릿 등록
+POST _script/{template_name}
+{
+    "script" : {
+        "lang" : "mustache", 
+        "source" : {
+            "query" : {
+                "match" : {
+                    "movieNm" : "{{ movie_name }}"
+                }
+            }
+        }
+    }
+}
+
+# 템플릿을 통한 검색
+POST /{index}/_doc/_search/template
+{
+    "id" : "{template_name}",
+    "params" : {
+        "movie_name" : "harry"
+    }
+}
+```
