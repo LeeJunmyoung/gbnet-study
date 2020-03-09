@@ -234,3 +234,44 @@ POST /_aliases
 }
 
 ```
+
+## 스냅샷응 이용한 백업/복구
+> 클러스터와 인덱스의 데이터가 커질수록 백업의 필요성도 커진다.  
+> 이러한 문제를 해결하기 위해 _snapshot API를 제공한다.  
+> 스냅샷 기능을 이용해 개별 인덱스를 백업 할 수도 있고, 클러스터 전체를 스냅샷으로 만드는 것도 가능.  
+```
+# backup폴더 생성.
+# config 폴더에 elasticsearch.yml 에 스냅숏을 사용하도록 지정.
+> path.repo: ["{dir_path}"]
+
+# 백업 repository 생성
+PUT /_snapshot/{repo}
+{
+    "type" : "fs",
+    "settings" : {
+        "location" : "{dir_path}",
+        "compress" : true
+    }
+}
+
+# movie_snap_20200309 스냅샷 생성 
+PUT /_snapshot/{repo}/{snap_name}?wait_for_completion=true
+{
+    "indices" : "movie_20200309",
+    "ignore_unavailable" : true,
+    "include_global_state" : false
+}
+
+# 스냅샷 확인
+GET /_snapshot/movie/_all
+
+# 스냅샷 복구
+- movie_20200309 인덱스가 복구된다.
+- 하지만 인덱스가 있다면 복구는 실패한다.
+POST /_snapshot/{repo}/{snap_name}/_restore
+
+# 스냅샷 삭제
+DELETE /_snapshot/{repo}/{snap_name}
+
+
+```
