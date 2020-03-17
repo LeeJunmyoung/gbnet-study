@@ -51,3 +51,18 @@ POST /movie_term_suggest/_search
 > 자동완성은 글자가 입력 될때마다 검색 결과를 보여줘야 하기 때문에 Term Suggest API 와는 다르게 응답속도가 매우 중요함.  
 > 그래서 FST(Finite State Transducer)를 사용함. FST는 검색어가 모두 메모리에 로드되어 서비스 되는 구조
 > 자동 완성 기능을 사용하기 위해서는 데이터 타입을 completion으로 설정해서 인덱스를 생성해야 함. 
+
+```
+PUT /movie_term_completion
+{
+    "mappings" : {
+        "_doc" : {
+            "properties" : {
+                "movieNmEnComple" : {
+                    "type": "completion"
+                }
+            }
+        }
+    }
+}
+```
