@@ -38,4 +38,16 @@ POST /movie_term_suggest/_search
 }
 
 > lave와 일치파는 텀이 존재하지 않음. 하지만 Term Suggest 결과로 lave와 가장 유사한 단어를 추출해서 제공함.  
+> text는 제안한 문서를 나타냄.  score는 제안하고자 하는 텍스트와 원본이 얼마나 가까운지 나타냄.  freq는 전체 문서에서 해당 텀의 빈도가 얼마나 나오는지 보여줌.
 ```
+
+1. Term Suggest API 한글 처리
+> 한글의 자소를 분해새서 문서를 처리한 후 색인할 경우 영문과 동일하게 추천기능을 구현하는 것이 가능.
+> 한글의 경우 ICU분석기를 통해
+> https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html#analysis-icu-install
+
+### Completion Suggest API
+> 엘라스틱서치는 자동완성을 위해 Completion Suggest API를 제공함.  
+> 자동완성은 글자가 입력 될때마다 검색 결과를 보여줘야 하기 때문에 Term Suggest API 와는 다르게 응답속도가 매우 중요함.  
+> 그래서 FST(Finite State Transducer)를 사용함. FST는 검색어가 모두 메모리에 로드되어 서비스 되는 구조
+> 자동 완성 기능을 사용하기 위해서는 데이터 타입을 completion으로 설정해서 인덱스를 생성해야 함. 
