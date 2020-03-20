@@ -4,7 +4,43 @@
 ```
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.1-linux-x86_64.tar.gz
 tar -xvzf elasticsearch-7.6.1-linux-x86_64.tar.gz
+
+> 유의 사항
+1 외부에서 해당 포트로 접근 불가시
+    > vi /conf/elasticsearch.yml
+    # 아래와 같이 변경
+    -----------------
+    network.host: 0.0.0.0
+    discovery.seed_hosts: ["127.0.0.1", "[::1]"]
+    -----------------
+
+2 ERROR. max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
+    > ulimit -SA 명령어로 max user processes 를 확인한다.
+    > vi /etc/security/limits.conf
+    # 아래와 같이 변경
+    -----------------
+    domain  type    item    value
+    www     hard    nproc   65536
+    www     hard    nofile  65536
+    -----------------
+
+    domain : 제한할 대상작성 (*, user명, 그룹명을 줄 수 있다.(그룹에 적용할 경우 @가 붙는다))
+    type : 강하게 제한할 것인지, 어느정도 여유를 줄 것인지를 결정한다.
+    soft : soft로 설정한 용량을 넘어가면 '경고' 메시지를 남깁니다..
+    hard : 어떠한 일이 있어도 hard를 넘을 수 없다는 의미이다.
+    item : 제한할 항목으로 core, data seg, file size등 여러가지가 존재.
+    nproc : 최대 프로세스의 갯수(KB)
+    stack : 최대 스택 사이즈(KB)
+    nofile : 한번에 열 수 있는 최대 파일 수
+    core : core파일의 사이즈(KB)
+    value : 제한 하고자 하는 설정값
+
+3 ERROR. max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+    > 하나의 프로세스가 가질 수 있는 메모리 맵 영역의 최대수를 수정.
+    > sudo sysctl-w vm.max_map_count=262144 
 ```
+
+
 
 ## Nori 설치 
 > ES6.4부터 한글 형태소 분석기 nori가 추가됨.
