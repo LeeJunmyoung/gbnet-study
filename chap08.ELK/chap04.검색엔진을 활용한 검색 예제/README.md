@@ -1,5 +1,11 @@
 # 한글 형태소 분석기를 이용한 검색예제
 
+## 엘라스틱 서치 설치
+```
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.1-linux-x86_64.tar.gz
+tar -xvzf elasticsearch-7.6.1-linux-x86_64.tar.gz
+```
+
 ## Nori 설치 
 > ES6.4부터 한글 형태소 분석기 nori가 추가됨.
 ```
