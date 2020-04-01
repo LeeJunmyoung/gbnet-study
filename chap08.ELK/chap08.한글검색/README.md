@@ -84,3 +84,5 @@ PUT /movie_term_completion/_search
     }
 }
 ```
+
+## 맞춤법 검사기
