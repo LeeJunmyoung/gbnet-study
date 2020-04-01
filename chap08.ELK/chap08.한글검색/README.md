@@ -66,5 +66,8 @@ PUT /movie_term_completion
     }
 }
 
-
+PUT /movie_term_completion/_doc/1
+{
+    "movieNmEnComple" : "After love"
+}
 ```
