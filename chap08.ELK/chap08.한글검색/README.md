@@ -70,4 +70,17 @@ PUT /movie_term_completion/_doc/1
 {
     "movieNmEnComple" : "After love"
 }
+
+PUT /movie_term_completion/_search
+{
+    "suggest" : {
+    	"movie_completion": {
+    		"prefix": "lo",
+    		"completion" : {
+    			"field": "movieNmEnComple",
+    			"size" : 5
+    		}
+    	}
+    }
+}
 ```
