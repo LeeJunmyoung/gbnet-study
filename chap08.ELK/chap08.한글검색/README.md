@@ -132,3 +132,10 @@ PUT /movie_term_completion/_search
         }
     }
     ```
+4. 데이터 추가
+    ```
+    PUT /company_spellchecker/_doc/1
+    {
+        "name" : "테슬라"
+    }
+    ```
