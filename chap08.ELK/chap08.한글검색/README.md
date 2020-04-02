@@ -90,4 +90,45 @@ PUT /movie_term_completion/_search
 ### Term suggester API 를 이용한 맞춤법    
 
 1. 자바카페 플러그인 설치  
-    > ./elasticsearch-plugin install https://github.com/javacafe-project/elastic-book-etc/raw/master/plugin/javacafe-analyzer-6.4.3.zip
+    > ./elasticsearch-plugin install https://github.com/javacafe-project/elastic-book-etc/raw/master/plugin/javacafe-analyzer-6.4.3.zip  
+
+2. 인덱스 생성
+    ```
+    PUT /company_spellchecker
+    {
+        "settings": {
+            "index": {
+                "analysis": {
+                    "analyzer": {
+                        "korean_spell_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "standard",
+                            "filter": [
+                            "trim",
+                            "uppercase",
+                            "javacafe_spell"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+3. 매핑 설정  
+    ```
+    PUT /company_spellchecker/_doc/_mappings
+    {
+        "properties": {
+        "name": {
+            "type": "keyword",
+            "copy_to":["suggest"]
+        },
+        "suggest": {
+            "type": "completion",
+            "analyzer": "korean_spell_analyzer"
+        }
+        }
+    }
+    ```
