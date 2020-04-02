@@ -139,3 +139,17 @@ PUT /movie_term_completion/_search
         "name" : "테슬라"
     }
     ```
+5. 오타 교정 API
+    ```
+    POST /company_spellchecker/_doc/_search
+    {
+        "suggest": {
+            "my-suggestion" : {
+                "text": "톄슬라",
+                "term": {
+                    "field" : "suggest"
+                }
+            }
+        }
+    }
+    ```
