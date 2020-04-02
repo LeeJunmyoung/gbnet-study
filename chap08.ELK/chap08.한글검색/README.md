@@ -86,3 +86,8 @@ PUT /movie_term_completion/_search
 ```
 
 ## 맞춤법 검사기
+
+### Term suggester API 를 이용한 맞춤법    
+
+1. 자바카페 플러그인 설치.  
+    - wget https://github.com/javacafe-project/elasticsearch-plugin/releases/download/v6.4.3/javacafe-analyzer-6.4.3.zip
