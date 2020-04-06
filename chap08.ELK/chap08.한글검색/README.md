@@ -155,3 +155,58 @@ PUT /movie_term_completion/_search
     ```
 
 ## 한영/영한 오타 교정
+
+1. 인덱스 생성
+    ```
+    # 실제로 검색될 인덱스
+    PUT /company
+    {
+        "settings": {
+            "index": {
+                "analysis": {
+                    "analyzer": {
+                        "my_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "standard",
+                            "filter": [
+                                "trim",
+                                "lowercase"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    # 한영오차교정과 영한 오차교정을 위한 인덱스
+    PUT /search_keyword
+    {
+        "settings": {
+            "index": {
+                "analysis": {
+                    "analyzer": {
+                        "kor2eng_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "standard",
+                            "filter": [
+                                "trim",
+                                "lowercase",
+                                "javacafe_kor2eng"
+                            ]
+                        },
+                        "eng2kor_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "standard",
+                            "filter": [
+                                "trim",
+                                "lowercase",
+                                "javacafe_eng2kor"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ```
