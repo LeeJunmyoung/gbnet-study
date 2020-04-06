@@ -264,3 +264,31 @@ PUT /movie_term_completion/_search
         "name": "apple"
     }
     ```
+4. 검색
+    > 1. search_keyword 인덱스에 사용자 검색어를 가지고 검색질의  
+    > 2. 검색결과가 없다면 검색어 그대로 company 인덱스에 검색 질의
+    > 3. 검색 결과가 있다면 변경된 검색어로 company인덱스에 검색질의
+
+    ```
+    POST /search_keyword/_search
+    {
+        "query": {
+            "match": {
+                "eng2kor_suggest": {
+                    "query": "tkatjdwjswk"
+                }
+            }
+        }
+    }
+
+    POST /search_keyword/_search
+    {
+        "query": {
+            "match": {
+                "kor2eng_suggest": {
+                    "query": "메ㅔㅣㄷ"
+                }
+            }
+        }
+    }
+    ```
