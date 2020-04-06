@@ -158,7 +158,7 @@ PUT /movie_term_completion/_search
 
 1. 인덱스 생성
     ```
-    # 실제로 검색될 인덱스
+    # 원본데이터 인덱스
     PUT /company
     {
         "settings": {
@@ -206,6 +206,40 @@ PUT /movie_term_completion/_search
                         }
                     }
                 }
+            }
+        }
+    }
+    ```
+
+2. 매핑설정
+    ```
+    # 원본데이터 매핑설정
+    PUT /company/_doc/_mappings
+    {
+        "properties": {
+            "name": {
+                "type" : "keyword"
+            }
+        }
+    }
+
+    # 한영 오타교정을 위한 매핑 설정
+    PUT /search_keyword/_doc/_mapping
+    {
+        "properties": {
+            "name": {
+                "type": "keyword",
+                "copy_to": ["kor2eng_suggest", "eng2kor_suggest"]
+            },
+            "kor2eng_suggest": {
+                "type": "text",
+                "analyzer": "standard",
+                "search_analyzer": "kor2eng_analyzer"
+            },
+            "eng2kor_suggest": {
+                "type": "text",
+                "analyzer": "standard",
+                "search_analyzer": "eng2kor_analyzer"
             }
         }
     }
