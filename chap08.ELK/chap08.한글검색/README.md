@@ -153,3 +153,5 @@ PUT /movie_term_completion/_search
         }
     }
     ```
+
+## 한영/영한 오타 교정
