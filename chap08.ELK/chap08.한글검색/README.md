@@ -244,3 +244,23 @@ PUT /movie_term_completion/_search
         }
     }
     ```
+3. 데이터 입력
+    ```
+    PUT /company/_doc/1
+    {
+        "name": "삼성전자"
+    }
+    PUT /company/_doc/2
+    {
+        "name": "apple"
+    }
+    
+    PUT /search_keyword/_doc/1
+    {
+        "name": "삼성전자"
+    }
+    PUT /search_keyword/_doc/2
+    {
+        "name": "apple"
+    }
+    ```
