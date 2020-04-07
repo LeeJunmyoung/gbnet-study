@@ -292,3 +292,35 @@ PUT /movie_term_completion/_search
         }
     }
     ```
+
+## 한글 키워드 자동완성    
+     
+### Completion Suggest API 를 이용한 한글 자동완성
+
+1. 인덱스 생성
+    ```
+    PUT /ac_test
+    {
+        "settings": {
+            "index": {
+                "number_of_shards": 5,
+                "number_of_replicas": 1
+            }
+        }
+    }
+    ```
+
+2. 매핑 설정
+    ```
+    PUT /ac_test/_mapping/ac_test
+    {
+        "properties": {
+            "itemSrc": {
+                "type": "keyword"
+            },
+            "itemCompletion": {
+                "type": "completion"
+            }
+        }
+    }
+    ```
