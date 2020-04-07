@@ -383,11 +383,27 @@ PUT /movie_term_completion/_search
     PUT /ac_test/_mapping/ac_test
     {
         "properties": {
-            "itemSrc": {
-                "type": "keyword"
+            "item": {
+                "type": "keyword",
+                "boost": 30
             },
-            "itemCompletion": {
-                "type": "completion"
+            "itemNgram": {
+                "type": "text",
+                "analyzer": "ngram_analyzer",
+                "search_analyzer": "ngram_analyzer",
+                "boost": 3
+            },
+            "itemNgramEdge": {
+                "type": "text",
+                "analyzer": "edge_ngram_analyzer",
+                "search_analyzer": "ngram_analyzer",
+                "boost": 2
+            },
+            "itemNgramEdgeBack": {
+                "type": "text",
+                "analyzer": "edge_ngram_analyzer_back",
+                "search_analyzer": "ngram_analyzer",
+                "boost": 1
             }
         }
     }
