@@ -121,14 +121,14 @@ PUT /movie_term_completion/_search
     PUT /company_spellchecker/_doc/_mappings
     {
         "properties": {
-        "name": {
-            "type": "keyword",
-            "copy_to":["suggest"]
-        },
-        "suggest": {
-            "type": "completion",
-            "analyzer": "korean_spell_analyzer"
-        }
+            "name": {
+                "type": "keyword",
+                "copy_to":["suggest"]
+            },
+            "suggest": {
+                "type": "completion",
+                "analyzer": "korean_spell_analyzer"
+            }
         }
     }
     ```
