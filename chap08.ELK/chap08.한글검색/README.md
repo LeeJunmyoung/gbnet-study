@@ -305,6 +305,74 @@ PUT /movie_term_completion/_search
             "index": {
                 "number_of_shards": 5,
                 "number_of_replicas": 1
+            },
+            "analysis": {
+                "analyzer": {
+                    "ngram_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "ngram_tokenizer",
+                        "filter": [
+                            "lowercase",
+                            "trim"
+                        ]
+                    },
+                    "edge_ngram_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "edge_ngram_tokenizer",
+                        "filter": [
+                            "lowercase",
+                            "trim",
+                            "edge_ngram_filter_front"
+                        ]
+                    },
+                    "edge_ngram_analyzer_back": {
+                        "type": "custom",
+                        "tokenizer": "edge_ngram_tokenizer",
+                        "filter": [
+                            "lowercase",
+                            "trim",
+                            "edge_ngram_filter_back"
+                        ]
+                    }
+                },
+                "tokenizer": {
+                    "ngram_tokenizer": {
+                        "type": "nGram",
+                        "min_gram": "1",
+                        "max_gram": "50",
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation",
+                            "symbol"
+                        ]
+                    },
+                    "edge_ngram_tokenizer": {
+                        "type": "edgeNGram",
+                        "min_gram": "1",
+                        "max_gram": "50",
+                        "token_chars": [
+                            "letter",
+                            "digit",
+                            "punctuation",
+                            "symbol"
+                        ]
+                    }
+                },
+                "filter": {
+                    "edge_ngram_filter_front": {
+                        "type": "edgeNGram",
+                        "min_gram": "1",
+                        "max_gram": "50",
+                        "side": "front"
+                    },
+                    "edge_ngram_filter_back": {
+                        "type": "edgeNGram",
+                        "min_gram": "1",
+                        "max_gram": "50",
+                        "side": "back"
+                    }
+                }
             }
         }
     }
@@ -324,3 +392,4 @@ PUT /movie_term_completion/_search
         }
     }
     ```
+
