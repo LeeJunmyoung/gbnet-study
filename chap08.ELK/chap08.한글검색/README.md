@@ -408,4 +408,17 @@ PUT /movie_term_completion/_search
         }
     }
     ```
+3. 데이터 입력
+    ```
+    POST /ac_test/_bulk
+    { "index" : { "_index" : "ac_test", "_type" : "ac_test", "_id" : "1" } }
+    { "item"  : "신혼", "itemNgram" : "신혼", "itemNgramEdge" : "신혼", "itemNgramEdgeBack" : "신혼" }
 
+    { "index" : { "_index" : "ac_test", "_type" : "ac_test", "_id" : "2" } }
+    { "item"  : "신혼가전", "itemNgram" : "신혼가전", "itemNgramEdge" : "신혼가전", "itemNgramEdgeBack" : "신혼가전" }
+
+    { "index" : { "_index" : "ac_test", "_type" : "ac_test", "_id" : "3" } }
+    { "item"  : "신혼가전특별전", "itemNgram" : "신혼가전특별전", "itemNgramEdge" : "신혼가전특별전", "itemNgramEdgeBack" : "신혼가전특별전" }
+
+
+    ```
