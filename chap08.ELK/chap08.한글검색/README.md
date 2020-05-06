@@ -449,3 +449,101 @@ PUT /movie_term_completion/_search
 
 
     ```
+  
+  
+* 문제점.
+    > 한글 자동 키워드 완성인데 '신혼' 에서 '싢'까지만 입력할 경우는???  
+
+### 한글자모분석을 통한 자동완성
+  
+1.  인덱스생성  
+    ```
+    PUT /ac_test4
+    {
+        "settings" : {
+            "index" : {
+                "number_of_shards" : 5, 
+                "number_of_replicas" : 1 
+            },
+            "analysis": {
+                "analyzer": {
+                    "jamo_index_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "keyword",
+                        "filter": [
+                            "javacafe_jamo_filter",
+                            "lowercase",
+                            "trim",
+                            "edge_ngram_filter_front"
+                        ]
+                    },
+                    "jamo_search_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "keyword",
+                        "filter": [
+                            "javacafe_jamo_filter",
+                            "lowercase",
+                            "trim"
+                        ]
+                    }			
+                },
+                "tokenizer" : {
+                    "edge_ngram_tokenizer" : {
+                        "type" : "edgeNGram",
+                        "min_gram" : "1",
+                        "max_gram" : "50",
+                        "token_chars" : [
+                            "letter",
+                            "digit",
+                            "punctuation",
+                            "symbol"
+                        ]
+                    }
+                },			
+                "filter": {
+                    "edge_ngram_filter_front" : {
+                        "type" : "edgeNGram",
+                        "min_gram" : "1",
+                        "max_gram" : "50",
+                        "side" : "front"
+                    },
+                    "javacafe_jamo_filter": {
+                        "type": "javacafe_jamo"
+                    }			
+                }			
+            }		
+        }
+    }
+    ```
+2. 매핑설정
+    ```
+    PUT /ac_test4/_mapping/ac_test4
+    {
+        "properties": {
+            "item": {
+                "type": "keyword",
+                "boost": 30
+            },
+            "itemJamo": {
+                "type": "text",
+                "analyzer": "jamo_index_analyzer",
+                "search_analyzer": "jamo_search_analyzer",
+                "boost": 10
+            }
+        }
+    }
+    ```
+
+3. 데이터 입력
+```
+POST /ac_test4/_bulk
+
+{"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "1" }}
+{"item" : "신혼", "itemJamo" : "신혼"}
+
+{"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "2" }}
+{"item" : "신혼가전", "itemJamo" : "신혼가전"}
+
+{"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "3" }}
+{"item" : "신혼가전특별전", "itemJamo" : "신혼가전특별전"}
+```
