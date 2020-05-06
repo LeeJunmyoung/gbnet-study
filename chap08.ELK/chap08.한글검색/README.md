@@ -535,15 +535,32 @@ PUT /movie_term_completion/_search
     ```
 
 3. 데이터 입력
-```
-POST /ac_test4/_bulk
+    ```
+    POST /ac_test4/_bulk
 
-{"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "1" }}
-{"item" : "신혼", "itemJamo" : "신혼"}
+    {"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "1" }}
+    {"item" : "신혼", "itemJamo" : "신혼"}
 
-{"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "2" }}
-{"item" : "신혼가전", "itemJamo" : "신혼가전"}
+    {"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "2" }}
+    {"item" : "신혼가전", "itemJamo" : "신혼가전"}
 
-{"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "3" }}
-{"item" : "신혼가전특별전", "itemJamo" : "신혼가전특별전"}
-```
+    {"index" : { "_index" : "ac_test4", "_type" : "ac_test4", "_id" : "3" }}
+    {"item" : "신혼가전특별전", "itemJamo" : "신혼가전특별전"}
+    ```
+
+4. 검색
+    ```
+    POST /ac_test4/_search
+    {
+        "query" : {
+            "bool" : {
+                "should" : [{
+                    "term" : {
+                        "itemJamo" : "ㅅㅣㄴㅎ"
+                    }
+                }],
+                "minimum_should_match" : 1
+            }
+        }
+    }
+    ```
