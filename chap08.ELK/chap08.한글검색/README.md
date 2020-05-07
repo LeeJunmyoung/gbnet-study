@@ -449,7 +449,40 @@ PUT /movie_term_completion/_search
 
 
     ```
-  
+
+4. 검색  
+    ```
+    {
+        "explain":false,
+        "query": {
+            "bool": {
+            "should": [
+                {
+                "prefix": {
+                    "item": "신혼가"
+                }
+                },
+                {
+                "term": {
+                    "itemNgram": "신혼가"
+                }
+                },
+                {
+                "term": {
+                    "itemNgramEdge": "신혼가"
+                }
+                },
+                {
+                "term": {
+                    "itemNgramEdgeBack": "신혼가"
+                }
+                }
+            ],
+            "minimum_should_match": 1
+            }
+        }
+    }
+    ```
   
 * 문제점.
     > 한글 자동 키워드 완성인데 '신혼' 에서 '싢'까지만 입력할 경우는???  
