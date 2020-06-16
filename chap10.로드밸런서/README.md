@@ -29,7 +29,7 @@ live-server --port=8000
 
 ## 2. nginx 로드밸런싱 설정
 
-### nginx.conf
+### 2-1 nginx.conf
 ```
 #user  nobody;
 worker_processes  1;
@@ -96,4 +96,4 @@ http {
 
 
 
-## 3. 브라우저를 새로고침을 통해 로드밸런싱 확인.
+### 2-2. 브라우저를 새로고침을 통해 로드밸런싱 확인.
