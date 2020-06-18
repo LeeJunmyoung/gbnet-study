@@ -170,6 +170,30 @@ backend server
   balance roundrobin
   server server-blue 192.168.43.123:9999 check
   server server-green 192.168.43.123:10000 check
+  
+listen http-in
+  bind *:6999 # 관리자페이지?의 아이피:포트
+  mode http
+  balance
+  timeout client 5000
+  timeout connect 4000
+  timeout server 30000
+
+  #This is the virtual URL to access the stats page
+  stats uri /haproxy_stats
+
+
+  #Authentication realm. This can be set to anything. Escape space characters with a backslash.
+  stats realm HAProxy\ Statistics
+
+  #The user/pass you want to use. Change this password!
+  # 아이디:패스워드
+  stats auth myroot:password
+
+  #This allows you to take down and bring up back end servers.
+
+  #This will produce an error on older versions of HAProxy.
+  stats admin if TRUE
 ```
 
 ### 3-3. HAProxy 로깅 활성화
