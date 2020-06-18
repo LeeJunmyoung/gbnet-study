@@ -1,6 +1,34 @@
 # 로드밸런서
 > 부하분산 또는 로드 밸런싱은 컴퓨터 네트워크 기술의 일종으로 둘 혹은 셋이상의 중앙처리장치 혹은 저장장치와 같은 컴퓨터 자원들에게 작업을 나누는 것을 의미한다.  
 
+## 네트워크 로드밸런서 종류  
+  1. L2(Data Link Layer)  
+    - Mac Address Load Balancing  
+    - 예시 : Mac > 80–00–20–30–1C-47  
+    - 브릿지, 허브 등  
+    - 장점 : 구조가 간단, 신뢰성이 높다, 가격저렴, 성능이 좋다.  
+    - 단점 : Broadcast 패킷에 의해 성능저하 발생, 라우팅 등 상위레이어 프로토콜 기반 스위칭 불가  
+
+  2. L3(Network Layer)  
+    - IP Address Load Balancing  
+    - 예시 : IP > 213.12.32.123  
+    - L2 + Routing  
+    - Router, ICMP 프로토콜, IP  
+    - 장점: Broadcast 트래픽으로 전체 성능 저하 방지, 트레픽체크  
+    - 단점: 특정 프로토콜을 이용해야 스위칭 가능  
+
+  3. L4(Transport Layer)  
+    - Transport Layer(IP+Port) Load Balancing  
+    - 예시: IP+Port > 192.168.0.1:80, 123.1.55.444:7979
+    - TCP, UDP Protocol  
+    - 장점 : Port기반 스위칭 지원, VIP를 이용하여 여러대를 한대로 묶어 부하분산  
+  
+  4. L7(Application Layer)  
+    - Application Layer(사용자 Request) Load Balancing  
+    - 예시 : IP+Port+패킷 내용 >  
+    192.168.0.1:80, 123.1.55.444:7979 + GET/ img/aaa.jpg
+    - HTTP, FTP, SMTP Protocol  
+
 ## 1. 로컬 서버 구축
 > 빠르게 구축하기위에 npm 에 live-server 설치
 > 여러개의 서버를 올리도록하자
