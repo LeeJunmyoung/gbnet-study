@@ -6,7 +6,7 @@
 > 프로젝트를 위해 로더, 플러그인 등을 정의할 수 있다. 
 > https://github.com/webpack/webpack  
 
-## Introduce  
+## 1. Introduce  
 > webpack은 모듈 번들러이다.  
 > 주 목적은 javascript 파일을 번들링 하는 것이지만, 거의 모든 리소스 또는 자원을  
 > 변환, 번들링 또는 패키징 할 수 있다.  
@@ -14,4 +14,11 @@
      
 
 
-## 1.1 
+## 1.1 Install  
+```
+# install with npm : 
+npm install --save-dev webpack
+
+# install with yarn :
+yarn add webpack --dev
+```
