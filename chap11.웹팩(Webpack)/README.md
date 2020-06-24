@@ -18,7 +18,28 @@
 ```
 # install with npm : 
 npm install --save-dev webpack
+npm install -D webpack webpack-cli
 
 # install with yarn :
 yarn add webpack --dev
+yarn add webpack-cli --dev
 ```
+
+## 1.2 엔트리/아웃풋  
+> 웹팩은 여러개 파일을 하나의 파일로 합쳐주는 번들러(bundler)다.  
+
+```
+# webpack help
+node_modules/.bin/webpack --help
+--mode : Enable production optimizations or development hints.  
+         [선택: "development", "production", "none"]
+--entry : The entry point(s) of the compilation. [문자열]
+--output, -o : The output path and file for compilation assets
+
+# dist/main.js 번들 결과  
+node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/main.js
+
+# index.html 추가.
+<script src="dist/main.js"></script>
+```
+
