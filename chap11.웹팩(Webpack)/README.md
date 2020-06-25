@@ -46,4 +46,35 @@ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/
 > webpack의 설정파일의 경로를 지정하여 터미널에서 사용한 옵션을 코드로 구성  
 > default file : webpack.config.js  
 
+```
+# webpack.config.js
+
+const path = require('path');
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    main: './src/app.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve('./dist'),
+  },
+}
+
+
+```
+
+
+```
+package.json
+
+{
+  "scripts": {
+    "build": "./node_modules/.bin/webpack"
+  }
+}
+```
+
+> npm run build로 웹팩 작업 할수 있음
 
