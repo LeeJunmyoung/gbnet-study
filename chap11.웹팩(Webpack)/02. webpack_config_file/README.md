@@ -1,8 +1,12 @@
-# 웹팩 엔트리 / 아웃풋
+# 웹팩 설정파일
 ```
-# webpack 설치
-npm install -D webpack webpack-cli 
+# package.json file 생성
+npm init
 
-# dist/main.js에 번들된 결과를 저장
-node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/main.js
+# install webpakc module with yarn
+yarn add webpack --dev
+yarn add webpack-cli --dev
+
+# run
+npm run build
 ```
