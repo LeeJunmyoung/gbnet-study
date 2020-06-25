@@ -43,3 +43,7 @@ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/
 <script src="dist/main.js"></script>
 ```
 
+> webpack의 설정파일의 경로를 지정하여 터미널에서 사용한 옵션을 코드로 구성  
+> default file : webpack.config.js  
+
+
