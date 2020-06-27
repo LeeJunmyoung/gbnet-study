@@ -93,3 +93,7 @@ package.json
 > 로더는 파일을 다른 언어 (예 : TypeScript)에서 JavaScript로 변환하거나 인라인 이미지를 데이터 URL로로드 할 수 있다.   
 > 로더를 사용하면 모듈에서 직접 CSS 파일도 import 시킬수 있다.  
 
+```
+# install loader with loader
+npm install --save-dev css-loader
+```
