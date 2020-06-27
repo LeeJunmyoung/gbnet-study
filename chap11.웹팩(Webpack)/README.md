@@ -87,4 +87,9 @@ package.json
 > npm run build로 웹팩 작업 할수 있음
 
 
-## 1.3 로더 
+## 1.3 로더  
+> 로더는 소스코드에 모듈로 적용되는 변환이다.  
+> import로 사전 처리 될수 있다.   
+> 로더는 파일을 다른 언어 (예 : TypeScript)에서 JavaScript로 변환하거나 인라인 이미지를 데이터 URL로로드 할 수 있다.   
+> 로더를 사용하면 importJavaScript 모듈에서 직접 CSS 파일 과 같은 작업을 수행 할 수 있습니다  
+
