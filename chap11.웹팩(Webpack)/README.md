@@ -104,4 +104,14 @@ npm install --save-dev css-loader
 ```
 # install css-loader
 npm install -D css-loader
+
+# webpack.config.js css-loader module 추가
+module.exports = {
+  module: {
+    rules: [{
+      test: /\.css$/, // .css 확장자로 끝나는 모든 파일 
+      use: ['css-loader'], // css-loader를 적용한다 
+    }]
+  }
+}
 ```
