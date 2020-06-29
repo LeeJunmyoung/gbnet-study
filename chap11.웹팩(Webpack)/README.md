@@ -99,3 +99,9 @@ npm install --save-dev css-loader
 ```
 
 ### 1.3.1 css-loader
+> style sheet도 import 구문으로 불러올수 있다.
+
+```
+# install css-loader
+npm install -D css-loader
+```
