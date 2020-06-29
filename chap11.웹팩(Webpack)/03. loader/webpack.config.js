@@ -11,8 +11,8 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.js$/, // .js 확장자로 끝나는 모든 파일
-        use: [path.resolve('./src/myloader.js')] // 방금 만든 로더를 적용한다 
+        test: /\.js$/, // .js 확장자로 끝나는 모든 파일에 적용
+        use: [path.resolve('./src/myloader.js')] // 커스텀 로더
     }],
   }
 }

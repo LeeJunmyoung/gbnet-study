@@ -97,3 +97,5 @@ package.json
 # install loader with loader
 npm install --save-dev css-loader
 ```
+
+### 1.3.1 css-loader
