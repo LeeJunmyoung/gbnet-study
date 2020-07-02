@@ -134,3 +134,7 @@ module.exports = {
   }
 }
 ```
+
+### 1.3.3 file-loader
+> css 뿐만 아니라 소스 코드에서 사용하는 모든 파일을 모듈로 변환한다.  
+> css에서 url경로에 이미지를 file-loader를 이용해서 처리한다.  
