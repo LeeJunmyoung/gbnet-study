@@ -156,3 +156,30 @@ module.exports = {
   }
 }
 ```
+
+### 1.3.4 url-loader
+> 사용하는 이미지 개수가 많다면 request가 많아져서 부담이 갈 수 있다.  
+> Base64로 인코딩하여 Data URI Scheme 형식으로 문자열 형태로 소스에 자동으로 넣어준다.  
+> file-loader나 url-loader 둘중의 하나만 사용해야한다.
+
+```
+# install url-loader
+npm install -D url-loader
+
+module.exports = {
+  module: {
+    {
+      test: /\.png$/,
+      use: {
+        loader: 'url-loader', // url 로더를 설정한다
+        options: {
+          publicPath: './dist/', // file-loader와 동일
+          name: '[name].[ext]?[hash]', // file-loader와 동일
+          limit: 5000 // 5kb 미만 파일만 data url로 처리 
+        }
+      }
+    }
+  }
+}
+```
+
