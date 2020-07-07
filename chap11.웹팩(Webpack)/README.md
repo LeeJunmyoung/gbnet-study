@@ -187,3 +187,27 @@ module.exports = {
 ## 1.4 플러그인  
 > 웹팩 플러그인은 apply 메서드를 가지는 자바스크립트 object이다.  
 > apply 메서드는 웹팩 컴파일러로 부터 호출되어 전체 컴파일러 라이프 사이클에 접근할 수 있다.    
+
+### 1.4.1 커스텀 플러그인  
+```
+const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
+
+class ConsoleLogOnBuildWebpackPlugin {
+  apply(compiler) {
+    compiler.hooks.run.tap(pluginName, compilation => {
+      console.log('The webpack build process is starting!!!');
+    });
+  }
+}
+
+module.exports = ConsoleLogOnBuildWebpackPlugin;
+
+
+const MyPlugin = require('./ConsoleLogOnBuildWebpackPlugin');
+
+module.exports = {
+  plugins: [
+    new ConsoleLogOnBuildWebpackPlugin(),
+  ]
+}
+```
