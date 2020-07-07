@@ -184,4 +184,9 @@ module.exports = {
 ```
 
 
-## 1.4 플러그인
+## 1.4 플러그인  
+> 웹팩 플러그인은 apply 메서드를 가지는 자바스크립트 object이다.  
+> apply 메서드는 웹팩 컴파일러로 부터 호출되어 전체 컴파일러 라이프 사이클에 접근할 수 있다.    
+> 
+
+A webpack plugin is a JavaScript object that has an apply method. This apply method is called by the webpack compiler, giving access to the entire compilation lifecycle.
