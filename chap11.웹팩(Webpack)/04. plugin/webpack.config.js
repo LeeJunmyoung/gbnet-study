@@ -1,5 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
 const ConsoleLogOnBuildWebpackPlugin = require('./ConsoleLogOnBuildWebpackPlugin');
+const banner = require('./banner');
 
 module.exports = {
   mode: 'development',
@@ -29,5 +31,6 @@ module.exports = {
   },
   plugins: [
     new ConsoleLogOnBuildWebpackPlugin(),
+    new webpack.BannerPlugin(banner)
   ]
 }
