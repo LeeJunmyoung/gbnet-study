@@ -3,9 +3,9 @@ const webpack = require('webpack');
 const ConsoleLogOnBuildWebpackPlugin = require('./ConsoleLogOnBuildWebpackPlugin');
 const banner = require('./banner');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const mode = 'production';
 module.exports = {
-  mode: 'development',
+  mode: mode,
   entry: {
     main: './src/app.js'
   },
@@ -36,8 +36,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html', // 템플릿 경로
       templateParameters: { // 파라매터 변수
-        env: process.env.NODE_ENV === 'development' ? '(개발 ver)' : '', 
+        env: mode == 'development' ? '(개발 ver)' : '', 
       },
+      minify: mode === 'production' ? { 
+        collapseWhitespace: true, // 빈칸 제거 
+        removeComments: true, // 주석 제거 
+      } : false,
     })
   ]
 }
