@@ -1,0 +1,12 @@
+/*!
+ * commitVersion: 004b3c4
+ * Build Date: 2020-7-9 00:11:48
+ * Author: leejm1
+ *  
+ * log history 
+ * 004b3c4 - leejm1, 49 minutes ago : readme MiniCssExtractPlugin
+ * 11ec0a4 - leejm1, 59 minutes ago : CleanWebpackPlugin
+ * 011aa46 - leejm1, 62 minutes ago : CleanWebpackPlugin
+ * 006040f - leejm1, 64 minutes ago : 띄어쓰기
+ * 758ee65 - leejm1, 69 minutes ago : webpack.config.js 정적파일 loading시 파마리터 hash 값 추가되도록 설정
+ */body{background-color:green}.background{background-image:url(window.jpg?44ca40c827ced7011c2421786d03e799);height:500px}

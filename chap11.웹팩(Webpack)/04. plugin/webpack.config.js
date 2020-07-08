@@ -1,8 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
-const ConsoleLogOnBuildWebpackPlugin = require('./ConsoleLogOnBuildWebpackPlugin');
-const banner = require('./banner');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path                            = require('path');
+const webpack                         = require('webpack');
+const { CleanWebpackPlugin }          = require('clean-webpack-plugin');
+const banner                          = require('./banner');
+const ConsoleLogOnBuildWebpackPlugin  = require('./ConsoleLogOnBuildWebpackPlugin');
+const HtmlWebpackPlugin               = require('html-webpack-plugin');
+const MiniCssExtractPlugin            = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin         = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin                    = require('terser-webpack-plugin');
+
 const mode = 'production';
 module.exports = {
   mode: mode,
@@ -16,7 +21,9 @@ module.exports = {
   module: {
     rules: [{
       test: /\.css$/, // .css 확장자로 끝나는 모든 파일 
-      use: ['style-loader', 'css-loader'], // style-loader, css-loader를 적용한다. style-loader는 앞에 적용.
+      use: [mode === 'production' 
+              ? MiniCssExtractPlugin.loader  
+              : 'style-loader', 'css-loader'],
     },{
       test: /\.jpg$/,
       use: {
@@ -30,6 +37,24 @@ module.exports = {
       }
     }],
   },
+  optimization: { minimize: true, 
+                  minimizer: [
+                    new OptimizeCSSAssetsPlugin({}), 
+                    new TerserPlugin({ 
+                      terserOptions: {
+                        output: {
+                          comments: false,
+                        },
+                      },
+                      extractComments: {
+                        filename: (file) => {
+                          return 'banner.txt';
+                        },
+                        banner: () => { return banner } 
+                      } 
+                    }) 
+                  ]
+                },
   plugins: [
     new ConsoleLogOnBuildWebpackPlugin(),
     new webpack.BannerPlugin(banner),
@@ -43,6 +68,10 @@ module.exports = {
         removeComments: true, // 주석 제거 
       } : false,
       hash: true, // 정적 파일을 파라미터값에 해쉬값 추가
-    })
+    }),
+    new CleanWebpackPlugin(),
+    mode === 'production' 
+      ? new MiniCssExtractPlugin({filename: `[name].css`})
+      : null
   ]
 }
