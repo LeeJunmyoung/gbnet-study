@@ -42,6 +42,7 @@ module.exports = {
         collapseWhitespace: true, // 빈칸 제거 
         removeComments: true, // 주석 제거 
       } : false,
+      hash: true, // 정적 파일을 파라미터값에 해쉬값 추가
     })
   ]
 }
