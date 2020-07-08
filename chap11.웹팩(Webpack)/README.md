@@ -275,3 +275,17 @@ module.exports {
 ```
   
 ### 1.4.4 CleanWebpackPlugin
+> 빌드시 이전 빌드파일을 지워주는 플러그인.  
+```
+# install CleanWebpackPlugin
+npm install -D clean-webpack-plugin
+
+# webpack.config.js
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CleanWebpackPlugin(),
+  ]
+}
+```
