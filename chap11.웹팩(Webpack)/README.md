@@ -5,15 +5,15 @@
 > 명령 줄을 통해서 사용할 수 있으며, "webpack.config.js"이라는 이름의 구성 파일을 사용하여 구성할 수 있다.  
 > 프로젝트를 위해 로더, 플러그인 등을 정의할 수 있다. 
 > https://github.com/webpack/webpack  
-
+  
 ## 1. Introduce  
 > webpack은 모듈 번들러이다.  
 > 주 목적은 javascript 파일을 번들링 하는 것이지만, 거의 모든 리소스 또는 자원을  
 > 변환, 번들링 또는 패키징 할 수 있다.  
 > webpack은 ES5와 호환 되는 모든 브라우저를 지원함.  
      
-
-
+  
+  
 ## 1.1 Install  
 ```
 # install with npm : 
@@ -24,10 +24,10 @@ npm install -D webpack webpack-cli
 yarn add webpack --dev
 yarn add webpack-cli --dev
 ```
-
+  
 ## 1.2 엔트리/아웃풋  
 > 웹팩은 여러개 파일을 하나의 파일로 합쳐주는 번들러(bundler)다.  
-
+  
 ```
 # webpack help
 node_modules/.bin/webpack --help
@@ -42,10 +42,10 @@ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/
 # index.html 추가.
 <script src="dist/main.js"></script>
 ```
-
+  
 > webpack의 설정파일의 경로를 지정하여 터미널에서 사용한 옵션을 코드로 구성  
 > default file : webpack.config.js  
-
+  
 ```
 # webpack.config.js
 
@@ -72,8 +72,8 @@ entry : 웹팩은 기본적으로 여러 개의 자바스크립트 모듈을 하
 output : 번들링 결과에 파일을 만들어냄.   
          설정 파일의 Output 속성을 통해서 이 값을 다른 디렉터리와 파일로 변경할 수 있음.  
 ```
-
-
+  
+  
 ```
 package.json
 
@@ -83,24 +83,24 @@ package.json
   }
 }
 ```
-
+  
 > npm run build로 웹팩 작업 할수 있음
-
-
+  
+  
 ## 1.3 로더  
 > 로더는 소스코드에 모듈로 적용되는 변환이다.  
 > import로 사전 처리 될수 있다.   
 > 로더는 파일을 다른 언어 (예 : TypeScript)에서 JavaScript로 변환하거나 인라인 이미지를 데이터 URL로로드 할 수 있다.   
 > 로더를 사용하면 모듈에서 직접 CSS 파일도 import 시킬수 있다.  
-
+  
 ```
 # install loader with loader
 npm install --save-dev css-loader
 ```
-
+  
 ### 1.3.1 css-loader
 > style sheet도 import 구문으로 불러올수 있다.
-
+  
 ```
 # install css-loader
 npm install -D css-loader
@@ -115,11 +115,11 @@ module.exports = {
   }
 }
 ```
-
+  
 ### 1.3.2 style-loader
 > 자바스크립트로 변경된 스타일을 동적으로 돔에 추가한다.  
 > css를 번들링하기 위해서는 css-loader와 style-loader를 함께 사용한다.  
-
+  
 ```
 # install style-loader
 npm install -D style-loader
@@ -134,11 +134,11 @@ module.exports = {
   }
 }
 ```
-
+  
 ### 1.3.3 file-loader
 > css 뿐만 아니라 소스 코드에서 사용하는 모든 파일을 모듈로 변환한다.  
 > css에서 url경로에 이미지를 file-loader를 이용해서 처리한다.  
-
+  
 ```
 # install file-loader
 npm install -D file-loader
@@ -156,12 +156,12 @@ module.exports = {
   }
 }
 ```
-
+  
 ### 1.3.4 url-loader
 > 사용하는 이미지 개수가 많다면 request가 많아져서 부담이 갈 수 있다.  
 > Base64로 인코딩하여 Data URI Scheme 형식으로 문자열 형태로 소스에 자동으로 넣어준다.  
 > file-loader나 url-loader 둘중의 하나만 사용해야한다.
-
+  
 ```
 # install url-loader
 npm install -D url-loader
@@ -182,12 +182,12 @@ module.exports = {
   }
 }
 ```
-
-
+  
+  
 ## 1.4 플러그인  
 > 웹팩 플러그인은 apply 메서드를 가지는 자바스크립트 object이다.  
 > apply 메서드는 웹팩 컴파일러로 부터 호출되어 전체 컴파일러 라이프 사이클에 접근할 수 있다.    
-
+  
 ### 1.4.1 커스텀 플러그인  
 ```
 const pluginName = 'ConsoleLogOnBuildWebpackPlugin';
@@ -211,7 +211,7 @@ module.exports = {
   ]
 }
 ```
-
+  
 ### 1.4.2 banner plugin
 ```
 # banner.js
@@ -252,7 +252,7 @@ module.exports = {
 }
 
 ```
-
+  
 ### 1.4.3 HtmlWebpackPlugin
 > css, js 를 html 에 자동 번들링 하도록 도와준다.  
 ```
@@ -273,3 +273,5 @@ module.exports {
   ]
 }
 ```
+  
+### 1.4.4 CleanWebpackPlugin
