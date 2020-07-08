@@ -252,3 +252,24 @@ module.exports = {
 }
 
 ```
+
+### 1.4.3 HtmlWebpackPlugin
+> css, js 를 html 에 자동 번들링 하도록 도와준다.  
+```
+# install html-webpack-plugin
+npm i --save-dev html-webpack-plugin
+
+# webpack.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html', // 템플릿 경로
+      templateParameters: { // 파라매터 변수
+        env: process.env.NODE_ENV === 'development' ? '(개발 ver)' : '', 
+      },
+    })
+  ]
+}
+```

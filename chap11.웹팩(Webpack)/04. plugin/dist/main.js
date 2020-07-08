@@ -1,14 +1,14 @@
 /*!
- * commitVersion: d5d3f84
- * Build Date: 2020-7-8 21:49:50
+ * commitVersion: ac4c74d
+ * Build Date: 2020-7-8 22:31:51
  * Author: leejm1
  *  
  * log history 
- * d5d3f84 - leejm1, 13 minutes ago : custom plugins
+ * ac4c74d - leejm1, 32 minutes ago : banner plugin readme
+ * 648a1c2 - leejm1, 35 minutes ago : banner plugin
+ * 709e21c - leejm1, 41 minutes ago : banner plugin
+ * d5d3f84 - leejm1, 55 minutes ago : custom plugins
  * 8256c0f - leejm1, 22 hours ago : readme
- * 214c8b4 - leejm1, 22 hours ago : plugin exam
- * b56e207 - leejm1, 22 hours ago : custom plugin
- * 3b364bc - leejm1, 22 hours ago : ...
  */
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -188,7 +188,7 @@ eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtim
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"./dist/window.jpg?44ca40c827ced7011c2421786d03e799\");\n\n//# sourceURL=webpack:///./src/window.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"./window.jpg?44ca40c827ced7011c2421786d03e799\");\n\n//# sourceURL=webpack:///./src/window.jpg?");
 
 /***/ })
 
