@@ -211,3 +211,44 @@ module.exports = {
   ]
 }
 ```
+
+### 1.4.2 banner plugin
+```
+# banner.js
+const childProcess = require('child_process');
+
+module.exports = function banner() {
+  const commit = childProcess.execSync('git rev-parse --short HEAD')
+  const user = childProcess.execSync('git config user.name')
+  const log = childProcess.execSync('git log --pretty=format:"%h - %an, %ar : %s" -5')
+  const date = new Date().toLocaleString();
+  
+  return (
+    `commitVersion: ${commit}` +
+    `Build Date: ${date}\n` +
+    `Author: ${user} \n` +
+    `log history \n` +
+    `${log}`
+  );
+}
+
+# webpack.config.js
+const path = require('path');
+const webpack = require('webpack');
+const banner = require('./banner');
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    main: './src/app.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve('./dist'),
+  },
+  plugins: [
+    new webpack.BannerPlugin(banner)
+  ]
+}
+
+```
