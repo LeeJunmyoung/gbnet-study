@@ -289,3 +289,33 @@ module.exports = {
   ]
 }
 ```
+  
+### 1.4.5 MiniCssExtractPlugin
+> css파일을 별도로 파일로 변환해서 만들어주는 플러그인.  
+```
+# install MiniCssExtractPlugin
+npm install -D mini-css-extract-plugin
+
+# webpack.config.js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+module.exports = {
+  module: {
+    rules: [{
+      test: /\.css$/,
+      use: [
+        process.env.NODE_ENV === 'production' 
+        ? MiniCssExtractPlugin.loader  
+        : 'style-loader', 'css-loader'
+      ],
+    }]
+  },
+  plugins: [
+    ...(
+      process.env.NODE_ENV === 'production' 
+      ? [ new MiniCssExtractPlugin({filename: `[name].css`}) ]
+      : []
+    ),
+  ],
+}
+```
