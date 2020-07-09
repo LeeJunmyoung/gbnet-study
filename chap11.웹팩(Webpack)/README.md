@@ -325,4 +325,19 @@ module.exports = {
   
 # 바벨
 
-## 1. Introduce
+## 1. Introduce  
+> ES5 이상의 코드를 하위 버전으로 바꿔주는 역할을 함.  
+> IE나 구버전 브라우저에서 최신 자바스크립트 코드를 작동하도록 변환해준다.  
+> 바벨은 파싱과 출력만을 담당한다.
+
+### 1.1 Install
+```
+# babel install
+npm install -D @babel/core @babel/cli
+
+# app.js
+const alert = msg => console.log(msg);
+
+# babel cmd
+npx babel app.js
+```
