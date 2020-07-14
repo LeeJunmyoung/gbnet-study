@@ -7,7 +7,7 @@
 > https://github.com/webpack/webpack  
   
 
-  
+
   
 ## 1. Introduce  
 > webpack은 모듈 번들러이다.  
@@ -363,4 +363,19 @@ return a
 2. 변환 - 추상구문트리를 조건에 맞게 변환  
 3. 출력 - 변환된걸 출력  
 
-### 2.3 커스텀 
+### 2.3 커스텀 플러그인
+```
+# custom-plugin.js
+module.exports = function customPlugin() {
+  return {
+    visitor: {
+      VariableDeclaration(path) {
+        console.log('VariableDeclaration() kind:', path.node.kind);
+        if(path.node.kind === 'const' || path.node.kind === 'let') {
+          path.node.kind = 'var';
+        }
+      }  
+    }
+  }
+}
+```
