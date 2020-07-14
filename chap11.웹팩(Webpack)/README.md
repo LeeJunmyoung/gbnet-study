@@ -378,4 +378,6 @@ module.exports = function customPlugin() {
     }
   }
 }
+
+# npx babel app.js --plugins ./custom-plugin.js
 ```
