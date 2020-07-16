@@ -383,7 +383,7 @@ module.exports = function customPlugin() {
 # npx babel app.js --plugins ./custom-plugin.js
 ```
 
-### 2.4 플러그인 
+### 2.4 플러그인  
 ```
 # block scoping plugin install
 # const, let 처럼 블록 스코프 변수를 var로 변환해줌.
@@ -393,7 +393,24 @@ npm install -D @babel/plugin-transform-block-scoping
 # 람다식을 es5에 맞게 변환해줌.
 npm install -D @babel/plugin-transform-arrow-functions
 
+# strict mode plugin install  
+# ES5에 추가된 엄격 모드, 묵인했던 자바스크립트의 에러들의 메시지를 발생시킴.   
+npm install -D @babel/plugin-transform-strict-mode
+
 npx babel app.js \
 --plugins @babel/plugin-transform-block-scoping \
 --plugins @babel/plugin-transform-arrow-functions
+```
+  
+#### 2.4.1 babel.config.js  
+> webpack.config.js 처럼 바벨도 babel.config.js 를 이용해서 바벨 설정을 할 수 있다.  
+  
+```
+module.exports = {
+  plugins: [
+    "@babel/plugin-transform-block-scoping",
+    "@babel/plugin-transform-arrow-functions",
+    "@babel/plugin-transform-strict-mode", 
+  ]
+}
 ```
