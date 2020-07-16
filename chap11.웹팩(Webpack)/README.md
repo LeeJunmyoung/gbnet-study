@@ -413,4 +413,6 @@ module.exports = {
     "@babel/plugin-transform-strict-mode", 
   ]
 }
+
+npx babel app.js
 ```
