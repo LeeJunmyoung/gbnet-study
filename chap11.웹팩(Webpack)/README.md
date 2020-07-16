@@ -382,3 +382,18 @@ module.exports = function customPlugin() {
 
 # npx babel app.js --plugins ./custom-plugin.js
 ```
+
+### 2.4 플러그인 
+```
+# block scoping plugin install
+# const, let 처럼 블록 스코프 변수를 var로 변환해줌.
+npm install -D @babel/plugin-transform-block-scoping
+
+# arrow function plugin install
+# 람다식을 es5에 맞게 변환해줌.
+npm install -D @babel/plugin-transform-arrow-functions
+
+npx babel app.js \
+--plugins @babel/plugin-transform-block-scoping \
+--plugins @babel/plugin-transform-arrow-functions
+```
