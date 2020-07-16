@@ -12,6 +12,7 @@
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/plugin-transform-arrow-functions": "^7.10.4",
-    "@babel/plugin-transform-block-scoping": "^7.10.5"
+    "@babel/plugin-transform-block-scoping": "^7.10.5",
+    "@babel/plugin-transform-strict-mode": "^7.10.4"
   }
 }
