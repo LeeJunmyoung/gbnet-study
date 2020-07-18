@@ -416,3 +416,6 @@ module.exports = {
 
 npx babel app.js
 ```
+
+### 2.5 프리셋  
+> 여러가지 플러그인을 배열형식으로 관리 할 수 있다.  
