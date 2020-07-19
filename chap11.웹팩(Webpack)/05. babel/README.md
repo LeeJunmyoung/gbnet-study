@@ -8,6 +8,11 @@ npm install -D @babel/plugin-transform-arrow-functions
 npm install -D @babel/plugin-transform-strict-mode
 ```  
 
+## run
+```
+npx babel app.js
+```
+
 ## 프리셋
 ```
 # mypreset.js
@@ -27,4 +32,7 @@ module.exports = {
     './mypreset.js'
   ],
 }
+
+# install @babel/preset-env
+npm install -D @babel/preset-env
 ```
