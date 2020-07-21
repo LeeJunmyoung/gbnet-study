@@ -465,3 +465,31 @@ module.exports = {
   ]
 }
 ```
+
+### 2.6 폴리필
+> 폴리필(polyfill)은 웹 개발에서 기능을 지원하지 않는 웹 브라우저 상의 기능을 구현하는 코드를 뜻한다.  
+> Promise 같은 경우는 위에 프리셋으로 변환 할수 없다.  
+> 이럴 경우 폴리필을 사용해 변환한다.  
+
+```
+module.exports = {
+    presets: [
+        [
+            //'./mypreset.js'
+            '@babel/preset-env'
+            , {
+                targets: {
+                    chrome: '79',
+                    ie: '11' 
+                },
+                useBuiltIns: 'usage', // 폴리필 사용 방식 지정
+                                      // 'usage': 실제 소스코드에서 사용하여 필요한 폴리필만 포함하도록 트랜스폼한다.
+                                      // 'entry': 지정된 환경에서 필요한 폴리필은 일단 포함하도록 트랜스폼한다.
+                corejs: { // 폴리필 버전 지정
+                  version: 2
+                }
+            }
+        ]
+    ]
+}
+```
