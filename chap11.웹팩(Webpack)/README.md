@@ -472,6 +472,7 @@ module.exports = {
 > 이럴 경우 폴리필을 사용해 변환한다.  
 
 ```
+# babel.config.js 
 module.exports = {
     presets: [
         [
@@ -491,5 +492,39 @@ module.exports = {
             }
         ]
     ]
+}
+
+# webpack.config.js
+module: {
+  rules: [
+      {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader', // 바벨 로더를 추가한다 
+          query: {
+            presets: ['@babel/preset-env']
+          }
+      }
+  ],
+}
+
+# babel build
+npx babel app.js --out-file app.build.js
+```
+  
+> webpack.config.js 에 babel-loader를 추가하여 빌드할수 있다.  
+```
+# webpack.config.js
+module: {
+  rules: [
+      {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader', // 바벨 로더를 추가한다 
+          query: {
+            presets: ['@babel/preset-env']
+          }
+      }
+  ],
 }
 ```
