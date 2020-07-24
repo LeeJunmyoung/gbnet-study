@@ -535,3 +535,7 @@ module: {
 > ESLint는 ES(Ecama Script) + Lint 로 자바스크립트의 문법중 에러를 표시해준다.  
 > 정의한대로 코드를 점검하고, 에러가 있으면 표시해 준다.  
 
+# 3.1 install
+```
+npm install -D eslint
+```
