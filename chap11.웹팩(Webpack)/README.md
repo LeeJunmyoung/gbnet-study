@@ -538,4 +538,32 @@ module: {
 # 3.1 install
 ```
 npm install -D eslint
+
+$ npx eslint --init
+
+√ How would you like to use ESLint? · problems
+√ What type of modules does your project use? · esm
+√ Which framework does your project use? · none
+√ Does your project use TypeScript? · No / Yes
+√ Where does your code run? · browser
+√ What format do you want your config file to be in? · JavaScript
+
+# .eslintrc.js 파일이 생성됌.
+
+module.exports = {
+  env: {
+    es6: true,
+    node: true,
+  },
+  extends: "eslint:recommended",
+  globals: {
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
+  },
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: "module",
+  },
+  rules: {},
+}
 ```
