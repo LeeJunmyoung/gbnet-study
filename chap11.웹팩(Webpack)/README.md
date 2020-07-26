@@ -549,13 +549,14 @@ $ npx eslint --init
 √ What format do you want your config file to be in? · JavaScript
 
 # .eslintrc.js 파일이 생성됌.
-
 module.exports = {
   env: {
     es6: true,
     node: true,
   },
   extends: "eslint:recommended",
+  # extends 옵션은 ESLint 정의된 규칙을 사용함.
+  # eslint:recommended, airbnb 등의 설정을 많이 사용함.
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
@@ -565,5 +566,7 @@ module.exports = {
     sourceType: "module",
   },
   rules: {},
+  # 자체적으로 덮어쓰고 싶은 규칙들을 정의할때 사용.
+  # https://eslint.org/docs/rules/
 }
 ```
