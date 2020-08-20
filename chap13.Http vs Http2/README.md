@@ -14,7 +14,7 @@
 1. HOL (Head of line blocking)  
     > 한번에 한 파일밖에 못 보낸다. 그래서 특정 파일의 로딩이 늦어지면 다른 파일까지 줄줄이 느려지는 병목현상이 생기게 된다.   
 
-![HOL](./HOL_blocking.PNG)    
+![HOL](./HOL_blocking.png)    
     
     1. 스위치의 경우 input을 거쳐 switching fabric을 거쳐 output에 도달하게 된다.  
     2. 4번태 큐에서 1,3번이 같은 4번 아웃풋에 도달해야한다.  
