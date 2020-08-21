@@ -35,23 +35,41 @@
 ### http 단점 개선의 노력들.
 
 #### 1. image sprite  
+
 ![image sprite](https://blaiprat.github.io/jquery.animateSprite/img/scottpilgrim_multiple.png)
 
+<br>
+
 #### 2. domain sharding
+
 ![domain sharding](./image/http2-domain-sharding.png)
 
+<br>
+
 #### 3. minify
+
+```
+# before
+function hello() {
+    console.log('hello');
+}
+
+# after
+function hello(){console.log('hello')}
+```
+
+<br>
+
 #### 4. data uri scheme
-<img src="data:image/png;base64,iVBORw0KGgoAAA
-ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
-//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU
-5ErkJggg==" alt="Red dot" /> 
+
 ```
 <img src="data:image/png;base64,iVBORw0KGgoAAA
 ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
 //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU
 5ErkJggg==" alt="Red dot" />
 ```
+
+<br>
 
 #### 5. fast-loading html page
 ![fast-loading](./image/fast-loading.PNG)
