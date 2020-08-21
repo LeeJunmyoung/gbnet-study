@@ -11,7 +11,8 @@
 
 ### http 단점.
 
-1. HOL (Head of line blocking)  
+#### 1. HOL (Head of line blocking)    
+
     > 한번에 한 파일밖에 못 보낸다. 그래서 특정 파일의 로딩이 늦어지면 다른 파일까지 줄줄이 느려지는 병목현상이 생기게 된다.   
 
 <br>
