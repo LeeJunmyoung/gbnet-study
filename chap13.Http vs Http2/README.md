@@ -79,6 +79,9 @@ ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
 <hr>
 <br>
 <br>
+
+#### 6. lazy loading
+
   
 ## http2
 > 2015년 IETF에 의해 공식적으로 발표된 HTTP/1.1의 차기 버전  
@@ -143,3 +146,4 @@ ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
 - https://developers.google.com/web/fundamentals/performance/http2
 - https://kinsta.com/learn/what-is-http2/
 - https://developer.mozilla.org
+- https://web.dev/lazy-loading-images/
