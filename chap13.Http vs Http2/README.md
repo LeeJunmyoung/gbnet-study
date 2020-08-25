@@ -81,7 +81,13 @@ ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
 <br>
 
 #### 6. lazy loading
+![lazy-loading](./image/lazy-loading.gif)
 
+<br>
+<br>
+<hr>
+<br>
+<br>
   
 ## http2
 > 2015년 IETF에 의해 공식적으로 발표된 HTTP/1.1의 차기 버전  
