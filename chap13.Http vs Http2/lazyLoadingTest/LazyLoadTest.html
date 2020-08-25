@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+	<meta charset="utf-8">
+		<title>Lazy Loading</title>
+		<style>
+			body { font-family: Consolas, sans-serif; }
+			h1 { margin: 30px 0px; text-align: center; }
+			img { display: block; margin: 0px auto; width: 300px; height: 300px; margin-bottom : 50px; }
+		</style>
+	</head>
+	<body>
+		<div class="a">
+			<h1>Lazy Loding</h1>
+		</div>
+		<div class="b">
+			<img data-src="images/1.jpg"  class="lazy"  data-srcset="images/1.jpg"   >
+			<img data-src="images/2.jpg"  class="lazy"  data-srcset="images/2.jpg"   >
+			<img data-src="images/3.jpg"  class="lazy"  data-srcset="images/3.jpg"   >
+			<img data-src="images/4.jpg"  class="lazy"  data-srcset="images/4.jpg"   >
+			<img data-src="images/5.jpg"  class="lazy"  data-srcset="images/5.jpg"   >
+			<img data-src="images/6.jpg"  class="lazy"  data-srcset="images/6.jpg"   >
+			<img data-src="images/7.jpg"  class="lazy"  data-srcset="images/7.jpg"   >
+			<img data-src="images/8.jpg"  class="lazy"  data-srcset="images/8.jpg"   >
+			<img data-src="images/9.jpg"  class="lazy"  data-srcset="images/9.jpg"   >
+			<img data-src="images/10.jpg" class="lazy"  data-srcset="images/10.jpg" >
+			<img data-src="images/11.jpg" class="lazy"  data-srcset="images/11.jpg" >
+			<img data-src="images/12.jpg" class="lazy"  data-srcset="images/12.jpg" >
+			<img data-src="images/13.jpg" class="lazy"  data-srcset="images/13.jpg" >
+			<img data-src="images/14.jpg" class="lazy"  data-srcset="images/14.jpg" >
+			<img data-src="images/15.jpg" class="lazy"  data-srcset="images/15.jpg" >
+			<img data-src="images/16.jpg" class="lazy"  data-srcset="images/16.jpg" >
+			<img data-src="images/17.jpg" class="lazy"  data-srcset="images/17.jpg" >
+			<img data-src="images/18.jpg" class="lazy"  data-srcset="images/18.jpg" >
+			<img data-src="images/19.jpg" class="lazy"  data-srcset="images/19.jpg" >
+			<img data-src="images/20.jpg" class="lazy"  data-srcset="images/20.jpg" >
+			<img data-src="images/21.jpg" class="lazy"  data-srcset="images/21.jpg" >
+			<img data-src="images/22.jpg" class="lazy"  data-srcset="images/22.jpg" >
+			<img data-src="images/23.jpg" class="lazy"  data-srcset="images/23.jpg" >
+			<img data-src="images/24.jpg" class="lazy"  data-srcset="images/24.jpg" >
+			<img data-src="images/25.jpg" class="lazy"  data-srcset="images/25.jpg" >
+			<img data-src="images/26.jpg" class="lazy"  data-srcset="images/26.jpg" >
+			<img data-src="images/27.jpg" class="lazy"  data-srcset="images/27.jpg" >
+			<img data-src="images/28.jpg" class="lazy"  data-srcset="images/28.jpg" >
+			<img data-src="images/29.jpg" class="lazy"  data-srcset="images/29.jpg" >
+			<img data-src="images/30.jpg" class="lazy"  data-srcset="images/30.jpg" >
+		</div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.classList.remove("lazy");
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  } else {
+    // Possibly fall back to event handlers here
+  }
+});
+		</script>
+	</body>
+</html>
