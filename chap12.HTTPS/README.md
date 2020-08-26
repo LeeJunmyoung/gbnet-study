@@ -51,15 +51,31 @@ SSL 3.0과 큰 차이가 있는 것은 아니나, SSL 3.0이 가지고 있는 �
 > 대신, 대부분의 대칭 키 암호는 공개 키 암호와 비교하여 계산 속도가 빠르다는 장점을 가진다.     
 > 따라서, 많은 암호화 통신에서는 비밀 키 암호를 사용하여 대칭 키 암호의 공통 키를 공유하고, 그 키를 기반으로 실제 통신을 암호화하는 구조를 사용한다.    
 
+<br>
+
+- openssl
 ```
 # plaintext.txt 파일을 ciphertext.txt 암호화
+# -a option is ascii
 echo 'this is the plain text' > plaintext.txt;
-openssl enc -e -des3 -salt -in plaintext.txt -out ciphertext.txt;
+openssl enc -e -des3 -a -salt -in plaintext.txt -out ciphertext.txt;
 
 enter des-ede3-cbc encryption password: #{암호키}
 Verifying - enter des-ede3-cbc encryption password: #{암호키}
 
 # ciphertext.txt를 plaintext2.txt 복화화
-openssl enc -d -des3 -in ciphertext.txt -out plaintext2.txt;
+openssl enc -d -des3 -a -in ciphertext.txt -out plaintext2.txt;
 enter des-ede3-cbc decryption password: #{암호키}
+```
+
+- java
+```
+byte[] encrypt = OpenSSL.encrypt("des3", "1234".toCharArray(), "this is the plain text".getBytes(), true);
+String s2 = new String(encrypt);
+System.out.println(Arrays.toString(encrypt));
+System.out.println(s2);
+
+byte[] decrypt = OpenSSL.decrypt("des3", "1234".toCharArray(), encrypt);
+String decryptStr = new String(decrypt, "UTF-8");
+System.out.println(decryptStr);
 ```
