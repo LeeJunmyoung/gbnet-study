@@ -70,12 +70,20 @@ enter des-ede3-cbc decryption password: #{암호키}
 
 - java
 ```
-byte[] encrypt = OpenSSL.encrypt("des3", "1234".toCharArray(), "this is the plain text".getBytes(), true);
-String s2 = new String(encrypt);
-System.out.println(Arrays.toString(encrypt));
-System.out.println(s2);
+import org.apache.commons.ssl.OpenSSL;
 
-byte[] decrypt = OpenSSL.decrypt("des3", "1234".toCharArray(), encrypt);
-String decryptStr = new String(decrypt, "UTF-8");
-System.out.println(decryptStr);
+public class OpenSSLTest {
+	public static void main(String args[]) throws Exception {
+		
+		
+		byte[] encrypt = OpenSSL.encrypt("des3", "1234".toCharArray(), "this is the plain text".getBytes(), true);
+		String s2 = new String(encrypt);
+		System.out.println(s2);
+		
+		byte[] decrypt = OpenSSL.decrypt("des3", "1234".toCharArray(), encrypt);
+		String decryptStr = new String(decrypt, "UTF-8");
+		System.out.println(decryptStr);
+	}
+}
+
 ```
