@@ -98,3 +98,21 @@ public class OpenSSLTest {
 2. A 는 공개키로 문서를 암호화
 3. 암호화된 문서를 B 에게 전달
 4. B 는 개인키로 이 문서를 복호화
+
+- openssl
+```
+# RSA 방식의 1024bit 의 개인키를 생성한다.
+openssl genrsa -out private.pem 1024;
+
+# private key로 public key를 생성
+openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+
+# 암호화 할 데이터
+echo 'this is plain text' > file.txt
+
+# 공개키로 암호화
+openssl rsautl -encrypt -inkey public.pem -pubin -in file.txt -out file.ssl
+
+# 개인키로 복호화
+openssl rsautl -decrypt -inkey private.pem -in file.ssl -out decrypted.txt
+```
