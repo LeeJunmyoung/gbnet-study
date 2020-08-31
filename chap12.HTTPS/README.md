@@ -116,3 +116,66 @@ openssl rsautl -encrypt -inkey public.pem -pubin -in file.txt -out file.ssl
 # 개인키로 복호화
 openssl rsautl -decrypt -inkey private.pem -in file.ssl -out decrypted.txt
 ```
+
+- java
+```
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.PrivateKey;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+
+import javax.crypto.Cipher;
+
+public class UtilRSA {
+
+	private Key publicKey;
+
+	private Key privateKey;
+
+	public String decode(String txt) throws Exception {
+		Cipher c = Cipher.getInstance("RSA");
+		c.init(Cipher.DECRYPT_MODE, privateKey);
+
+		return new String(c.doFinal(Base64.getDecoder().decode(txt.getBytes("UTF-8"))));
+
+	}
+
+	public String encode(String txt) throws Exception {
+		Cipher c = Cipher.getInstance("RSA");
+		c.init(Cipher.ENCRYPT_MODE, publicKey);
+
+		return new String(Base64.getEncoder().encode(c.doFinal(txt.getBytes("UTF-8"))));
+	}
+
+	public void generatorKey() throws Exception {
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+		keyPairGenerator.initialize(1024);
+		KeyPair keyPair = keyPairGenerator.genKeyPair();
+
+		publicKey = keyPair.getPublic();
+		privateKey = keyPair.getPrivate();
+	}
+
+	public static void main(String[] args) throws Exception {
+		String text = "This is the plain text";
+
+		UtilRSA rsa = new UtilRSA();
+		rsa.generatorKey();
+
+		String encodeText = rsa.encode(text);
+		String decodeText = rsa.decode(encodeText);
+		System.out.println("public key : " + Base64.getEncoder().encodeToString(rsa.publicKey.getEncoded()));
+		System.out.println("private key : " + Base64.getEncoder().encodeToString(rsa.privateKey.getEncoded()));
+		System.out.println("encode : " + encodeText);
+		System.out.println("decode : " + decodeText);
+	}
+}
+```
