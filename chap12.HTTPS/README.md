@@ -119,20 +119,24 @@ openssl rsautl -decrypt -inkey private.pem -in file.ssl -out decrypted.txt
 
 - java
 ```
-import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-import java.security.PrivateKey;
-import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 import javax.crypto.Cipher;
+
+import sun.security.util.DerInputStream;
+import sun.security.util.DerValue;
 
 public class UtilRSA {
 
@@ -164,6 +168,49 @@ public class UtilRSA {
 		privateKey = keyPair.getPrivate();
 	}
 
+	public void getPublicKey() throws Exception {
+		File f = new File("C:\\Users\\user\\Desktop\\public.pem");
+		FileInputStream fis = new FileInputStream(f);
+		DataInputStream dis = new DataInputStream(fis);
+		byte[] keyBytes = new byte[(int) f.length()];
+		dis.readFully(keyBytes);
+		dis.close();
+
+		String temp = new String(keyBytes);
+		String publicKeyPEM = temp.replace("-----BEGIN PUBLIC KEY-----\n", "").replace("-----END PUBLIC KEY-----", "");
+
+		org.apache.commons.ssl.Base64 b64 = new org.apache.commons.ssl.Base64();
+		byte[] decoded = b64.decode(publicKeyPEM);
+
+		X509EncodedKeySpec spec = new X509EncodedKeySpec(decoded);
+		KeyFactory kf = KeyFactory.getInstance("RSA");
+		publicKey = kf.generatePublic(spec);
+	}
+
+	public void getPrivateKey() throws Exception {
+		String content = new String(Files.readAllBytes(Paths.get("C:\\Users\\user\\Desktop\\private.pem")));
+		content = content.replaceAll("\\n", "").replace("-----BEGIN RSA PRIVATE KEY-----", "")
+				.replace("-----END RSA PRIVATE KEY-----", "");
+		byte[] bytes = Base64.getDecoder().decode(content);
+
+		DerInputStream derReader = new DerInputStream(bytes);
+		DerValue[] seq = derReader.getSequence(0);
+
+		BigInteger modulus = seq[1].getBigInteger();
+		BigInteger publicExp = seq[2].getBigInteger();
+		BigInteger privateExp = seq[3].getBigInteger();
+		BigInteger prime1 = seq[4].getBigInteger();
+		BigInteger prime2 = seq[5].getBigInteger();
+		BigInteger exp1 = seq[6].getBigInteger();
+		BigInteger exp2 = seq[7].getBigInteger();
+		BigInteger crtCoef = seq[8].getBigInteger();
+
+		RSAPrivateCrtKeySpec keySpec = new RSAPrivateCrtKeySpec(modulus, publicExp, privateExp, prime1, prime2, exp1,
+				exp2, crtCoef);
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		privateKey = keyFactory.generatePrivate(keySpec);
+	}
+
 	public static void main(String[] args) throws Exception {
 		String text = "This is the plain text";
 
@@ -176,6 +223,19 @@ public class UtilRSA {
 		System.out.println("private key : " + Base64.getEncoder().encodeToString(rsa.privateKey.getEncoded()));
 		System.out.println("encode : " + encodeText);
 		System.out.println("decode : " + decodeText);
+		
+		System.out.println("====================================================");
+
+		UtilRSA rsa2 = new UtilRSA();
+		rsa2.getPublicKey();
+		rsa2.getPrivateKey();
+
+		String encodeText2 = rsa2.encode(text);
+		String decodeText2 = rsa2.decode(encodeText2);
+		System.out.println("public key : " + Base64.getEncoder().encodeToString(rsa2.publicKey.getEncoded()));
+		System.out.println("private key : " + Base64.getEncoder().encodeToString(rsa2.privateKey.getEncoded()));
+		System.out.println("encode : " + encodeText2);
+		System.out.println("decode : " + decodeText2);
 	}
 }
 ```
