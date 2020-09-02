@@ -270,6 +270,9 @@ public class UtilRSA {
 ### SSL 통신과정
 ![SSL](./ssl.png)
 
+- 참고  
+[TLS Protocol](https://whitelka.tistory.com/3)
+
 <br>
 <br>
 <hr>
