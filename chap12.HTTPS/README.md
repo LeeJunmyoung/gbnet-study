@@ -297,6 +297,17 @@ openssl x509 -req -days 365 -in example.csr -signkey example.key -out example.cr
 # 인증서 보는 법 
 openssl x509 -in *.crt -noout -text
 openssl req -in *.csr -noout -text
+
+# vi /etc/nginx/sites-enabled/default
+server {
+	listen 443;
+
+	ssl on;
+	ssl_certificate /etc/nginx/conf.d/ssl/example.crt;
+	ssl_certificate_key /etc/nginx/conf.d/ssl/example.key;
+
+	server_name example.co.kr;
+}
 ```
 
 
