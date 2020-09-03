@@ -278,7 +278,31 @@ public class UtilRSA {
 <hr>
 
 ## nginx https 적용
+```
+# *.csr
+- Certificate Signing Request의 약자로 '인증서 서명 요청'을 의미하며 대부분 PEM 포맷.  
+- 공개키가 포함되며, 인증서가 적용되는 도메인에 대한 정보 등이 포함되어 있음
 
+# *.crt
+- 인증서 확장자 중 하나로 대부분 PEM 포맷
+- 주로 unix, linux 계열 시스템에서 많이 사용되는 확장자
+
+# *.key
+- 개인 또는 공개 PKCS#8 키 파일을 저장할 때 임의로 붙이는 확장자
+
+# 비밀키와 해당 비밀키로 인증서 생성
+openssl req -new -newkey rsa:2048 -nodes -keyout example.key -out example.csr
+openssl x509 -req -days 365 -in example.csr -signkey example.key -out example.crt
+
+# 인증서 보는 법 
+openssl x509 -in *.crt -noout -text
+openssl req -in *.csr -noout -text
+```
+
+
+<br>
+<br>
+<hr>
 
 - 출처     
 나무위키    
