@@ -316,6 +316,6 @@ server {
 <hr>
 
 - 출처     
-나무위키    
+[나무위키](https://namu.wiki/w/TLS?from=HTTPS#s-1.2)  
 [생활코딩](https://opentutorials.org/course/228/4894)  
 [초보몽키의 개발공부로그](https://wayhome25.github.io/cs/2018/03/11/ssl-https/#disqus_thread)
