@@ -31,3 +31,26 @@ int a[1000]         : 4byte * 1000 = 4kb
 int a[1000000]      : 4byte * 1000 * 1000 = 4mb
 int a[1000][1000]   : 4kb * 4kb = 16mb
 ```
+
+## 2. 그리디 알고리즘
+> 매 순간 가장 좋아 보이는 것을 선택하며 현재의 선택이 나중에 미칠 영향에 대해서는 고려하지 않는다.  
+> 거스름돈 문제는 대표적인 그리디 알고리즘 문제이다.  
+> 카운터에 500원, 100원, 50원 ,10원이 무제한으로 존재할 경우, 거슬러줘야 할돈이 N원일경우 거슬러줘야할 동전의 최소개수는???  
+
+```
+class GreedyCoinTest {
+    public static void main(String[] args) {
+        int n   = 1390; // 잔액
+        int cnt = 0;    // 동전 수
+
+        int[] coinArr = {500, 100, 50, 10};
+
+        for(int coin : coinArr) {
+            cnt += n / coin;
+            n = n % coin;
+        }
+
+        System.out.println("동전의 개수 : " + cnt);
+    }
+}
+```
