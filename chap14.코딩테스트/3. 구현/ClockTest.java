@@ -27,6 +27,7 @@ public class ClockTest {
 			for(int min = 0; min < 60; min++) {
 				for(int sec = 0; sec < 60; sec++) {
 					if(String.valueOf(hour).contains("3") || String.valueOf(min).contains("3") || String.valueOf(sec).contains("3"))
+					//if((hour+":"+min+":"+sec).contains("3"))
 						cnt++;
 				}
 			}
