@@ -79,3 +79,35 @@ class GreedyCoinTest {
   
 
 ** 1초에 2,000만번의 연산을 수행한다고 가정하고 문제풀기
+
+## 4. 탐색  
+> 탐색이란 많은 양의 데이터 중에서 원하는 데이터를 찾는 과정.   
+> 프로그래밍에서는 그래프, 트리 등의 자료구조 안에서 탐색을 하는 문제를 자주다룬다.  
+> 대표적인 탐색 알고리즘으로는 DFS, BFS를 꼽을 수 있다.  
+
+### 4-1. 자료구조 그리고 재귀함수
+> DFS, BFS 를 구현하려면 재귀함수와 자료구조를 이해해야 한다.
+
+- 스택 : 선입 후출 구조 또는 후입 선출 구조.
+- 큐 : 선입 선출 구조.
+- 재귀함수 : 자기 자신을 호출하는 함수
+```
+팩토리얼 구현시
+5! = 5 * 4 * 3 * 2 * 1
+public int factorial(int n) {
+    int result = 1;
+    for(int num = 1; num <= n; num++) {
+        result *= num;
+    }
+    return result;
+}
+
+public int recursiveFactorial(int n) {
+    if(n <= 1) {
+        return 1;
+    }
+    else {
+        return n * recursiveFactorial(n-1)
+    }
+}
+```
