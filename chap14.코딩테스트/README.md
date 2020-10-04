@@ -155,16 +155,18 @@ public int recursiveFactorial(int n) {
 > 이중 가장 작은 데이터를 선택해 맨 앞에 있는 데이터와 바꾸고  
 > 그 다음 작은 데이터를 선택해 앞에서 두 번째 데이터와 바꾸는 과정을 반복한다.
 > 이 방법은 매번 '가장 작은 것을 선택' 하는 선택 정렬 알고리즘 이다.  
+> 시간 복잡도 N^2
 
 ```
-배열
+데이터
 [7, 5, 9, 0, 3, 1] 
 
 1step : [0, 5, 9, 7, 3, 1]
 2step : [0, 1, 9, 7, 3, 5]
 3step : [0, 1, 3, 7, 9, 5]
 4step : [0, 1, 3, 5, 9, 7]
-5step : [0, 1, 3, 5, 7, 9] 
+5step : [0, 1, 3, 5, 7, 9]
+6step : [0, 1, 3, 5, 7, 9] 
 
 public static void main(String[] args) {
     int[] arr = {7, 5, 9, 0, 3, 1};
@@ -190,3 +192,37 @@ public static void main(String[] args) {
 }
 ```
 
+### 5-2. 삽입정렬  
+> 삽입 정렬은 필요할 때만 위치를 바꾸므로 '데이터가 거의 정렬 되어 있을 때' 훨씬 효율적이다.  
+> 선택 정렬은 현재 데이터의 상태와 상관없이 무조건 모든 원소를 비교하고 바꾸는 반면 삽입정렬은 트정한 데이터를 적절한 위치에 삽입한다는 의미에서 '삽입 정렬'이라고 부른다.  
+> 정렬되어 있는 데이터 리스트에서 적절한 위치를 찾은 뒤, 해당 위치에 삽입된다는 점이 특징이다.  
+> 시간 복잡도는 N^2 이지만, 이미 정렬 되어 있는 경우 1회만 비교 하므로 N이된다. 최악의 경우 N^2가 된다.
+
+```
+데이터
+[7, 5, 9, 0, 3, 1]
+
+1 step : 5, 7, 9, 0, 3, 1
+2 step : 5, 7, 9, 0, 3, 1
+3 step : 0, 5, 7, 9, 3, 1
+4 step : 0, 3, 5, 7, 9, 1
+5 step : 0, 1, 3, 5, 7, 9
+
+public static void main(String[] args) {
+    int[] arr = {7, 5, 9, 0, 3, 1};
+    
+    for(int i = 1; i < arr.length; i++){
+        int temp = arr[i];
+        int j;
+        for(j = i-1; j >= 0 && temp < arr[j]; j--){
+            arr[j+1] = arr[j];
+        }
+        arr[j+1] = temp;
+        System.out.print(String.format("%d step : ", i));
+        for(int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+```
