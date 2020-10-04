@@ -148,4 +148,45 @@ public int recursiveFactorial(int n) {
 <br>
 
 ## 5. 정렬 
-> 정렬(sort)란 데이터를 특정한 기준에 따라서 순서대로 나열하는 것.
+> 정렬(sort)란 데이터를 특정한 기준에 따라서 순서대로 나열하는 것.  
+
+### 5-1. 선택 정렬
+>  데이터가 무작위로 여러개 있을 경우  
+> 이중 가장 작은 데이터를 선택해 맨 앞에 있는 데이터와 바꾸고  
+> 그 다음 작은 데이터를 선택해 앞에서 두 번째 데이터와 바꾸는 과정을 반복한다.
+> 이 방법은 매번 '가장 작은 것을 선택' 하는 선택 정렬 알고리즘 이다.  
+
+```
+배열
+[7, 5, 9, 0, 3, 1] 
+
+1step : [0, 5, 9, 7, 3, 1]
+2step : [0, 1, 9, 7, 3, 5]
+3step : [0, 1, 3, 7, 9, 5]
+4step : [0, 1, 3, 5, 9, 7]
+5step : [0, 1, 3, 5, 7, 9] 
+
+public static void main(String[] args) {
+    int[] arr = {7, 5, 9, 0, 3, 1};
+
+    for(int i = 0; i < arr.length; i++) {
+        int minIndex = i;
+
+        for(int num = i + 1; num < arr.length; num++) {
+            if(arr[minIndex] > arr[num]) {
+                minIndex = num;
+            }
+        }
+        int temp        = arr[i];
+        arr[i]          = arr[minIndex];
+        arr[minIndex]   = temp;
+        
+        System.out.print(String.format("%d step : ", i+1));
+        for(int k : arr) {
+            System.out.print(k + " ");
+        }
+        System.out.println();
+    }
+}
+```
+
