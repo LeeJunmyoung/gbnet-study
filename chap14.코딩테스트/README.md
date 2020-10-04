@@ -146,3 +146,6 @@ public int recursiveFactorial(int n) {
 
 <hr>
 <br>
+
+## 5. 정렬 
+> 정렬(sort)란 데이터를 특정한 기준에 따라서 순서대로 나열하는 것.
