@@ -230,6 +230,7 @@ public static void main(String[] args) {
 
 ### 5-3. 퀵 정렬
 > 퀵 정렬은 기준을 설정한 다음 큰 수와 작은 수를 교환한 후 리스트를 반으로 나누는 방식으로 동작한다.  
+> 시간복잡도는 최악의 경우 N^2, 평균적으로 N log N이다.  
 
 #### 과정
 1. 리스트 가운데서 하나의 원소를 고른다. 이렇게 고른 원소를 피벗이라고 한다.  
@@ -237,3 +238,26 @@ public static void main(String[] args) {
 3. 분할된 두 개의 작은 리스트에 대해 재귀(Recursion)적으로 이 과정을 반복한다. 재귀는 리스트의 크기가 0이나 1이 될 때까지 반복된다.
 
     ![퀵 정렬](./img/quick_sort.gif)
+
+```
+public void quickSort(int[] arr, int left, int right) {
+    int i, j, pivot, tmp;
+    if (left < right) {
+        i = left;   j = right;
+        pivot = arr[(left+right)/2];
+        //분할 과정
+        while (i < j) {
+            while (arr[j] > pivot) j--;
+            // 이 부분에서 arr[j-1]에 접근해서 익셉션 발생가능함.
+            while (i < j && arr[i] < pivot) i++;
+
+            tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+        //정렬 과정
+        quickSort(arr, left, i - 1);
+        quickSort(arr, i + 1, right);
+    }
+}
+```
