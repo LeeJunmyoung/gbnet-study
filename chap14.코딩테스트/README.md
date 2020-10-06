@@ -261,3 +261,31 @@ public void quickSort(int[] arr, int left, int right) {
     }
 }
 ```
+
+### 5-4. 계수정렬
+> 계수정렬(count sort)알고리즘은 특정한 조건이 부합할 때만 사용 할 수 있는 매우 빠른 정렬 알고리즘이다.  
+> 데이터의 개수가 N, 데이터 중 최댓값이 K일 때 계수정렬은 최악의 경우에도 수행시간 O(N+K)를 보장한다.  
+> 모든 범위를 담을 수 있는 크기의 리스트를 선언하여 카운트를 저장한다.  
+> 계수 정렬은 비교 기반의 정렬 알고리즘이 아니다.  
+
+```
+//int[] arr = {0,1,2,1,0,1,2,0,5,3,1,2,2,0,2,1,5,3};
+//int max   = 6;
+public void countSort(int[] arr, int max) {
+    int[] count = new int[max];
+    
+    for(int num : count) {
+        count[num] = 0;
+    }
+
+    for(int num : arr) {
+        count[num] += 1; 
+    }
+    
+    
+    for(int num = 0; num < count.length; num++) {
+        for(int x = 0; x < count[num]; x++)
+            System.out.print(num + " ");
+    }
+}
+```
