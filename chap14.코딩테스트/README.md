@@ -294,3 +294,59 @@ public void countSort(int[] arr, int max) {
 > 이진 탐색은 배열 내부의 데이터가 정렬되어 있어야만 사용할 수 있는 알고리즘.  
 > 데이터가 무작위일때는 사용할 수 없지만, 이미 정렬되어 있다면 매우 빠르게 데이터를 찾을 수 있다는 특징이 있다.  
 > 이진 탐색은 탐색 범위를 절반씩 좁혀가며 데이터를 탐색.  
+
+```
+
+public class BinarySortTest {
+
+	public static void main(String[] args) {
+		int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		binarySearch(5, arr);
+		binarySearchIdx(5, arr, 0, arr.length);
+	}
+
+	public static int binarySearch(int iKey, int arr[]) {
+		int mid;
+		int left = 0;
+		int right = arr.length - 1;
+
+		while (right >= left) {
+			mid = (right + left) / 2;
+
+			if (iKey == arr[mid]) {
+				System.out.println("index: " + mid);
+				return mid;
+			}
+
+			if (iKey < arr[mid]) {
+				right = mid - 1;
+			} else {
+				left = mid + 1;
+			}
+
+		}
+		System.out.println("none");
+		return -1;
+	}
+
+	public static int binarySearchIdx(int iKey, int arr[], int start, int end) {
+		if (start > end || start >= arr.length) {
+			System.out.println("none");
+			return -1;
+		}
+
+		int mid = (start + end) / 2;
+
+		if (arr[mid] == iKey) {
+			System.out.println("index: " + mid);
+			return mid;
+		} else if (arr[mid] > iKey) {
+			return binarySearchIdx(iKey, arr, start, mid - 1);
+		} else {
+			return binarySearchIdx(iKey, arr, mid + 1, end);
+		}
+	}
+
+}
+```
