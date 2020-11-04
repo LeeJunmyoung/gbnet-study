@@ -20,6 +20,7 @@
 
 ![mq](./image/amqp_exam.png)
 
+### 용어 정리
 명칭 | 설명
 ---|---
 Publisher(Producer) | 메시지를 생성하고 발송하는 주체.
@@ -31,7 +32,13 @@ Binding             | Exchange와 Queue의 관계를 정의
 Consumes(Subscribe) | Consumer가 Queue에 접근하여 메시지를 가져오는 행위.
 Consumer            | 메시지를 가져오는 주체.
 
-
+### Exchanges and Exchange Types
+Exchange type | Default pre-declared names | 설명
+---|---|---
+Direct exchange     | (Empty string) and amq.direct
+Fanout exchange     | amq.fanout
+Topic exchange      | amq.topic
+Headers exchange    | amq.match (and amq.headers in RabbitMQ)
 
 ### 출처 
 - https://steady-snail.tistory.com/165
