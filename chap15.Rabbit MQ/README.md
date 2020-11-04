@@ -43,6 +43,13 @@ Fanout exchange     | amq.fanout | exchange에 등록된 모든 큐에 메세지
 Topic exchange      | amq.topic | 라우팅 키 패턴을 이용하여 메세지를 라우팅한다.
 Headers exchange    | amq.match (and amq.headers in RabbitMQ) | 라우팅 키 말고 헤더를 사용하여 라우팅한다.
 
+### 4. 설치
+```
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+
+# management - guest / guest
+```
+
 ### 출처 
 - https://steady-snail.tistory.com/165
 - https://www.rabbitmq.com/tutorials/amqp-concepts.html
