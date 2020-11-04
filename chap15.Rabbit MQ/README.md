@@ -14,5 +14,25 @@
 
 ![mq](./image/mq.png)
 
+## Rabbit MQ
+> AMQP 를 구현한 오픈 소스 메시지 브로커 소프트웨어이며, STOMP, MQTT 및 기타 프로토콜을 지원한다.
+> AMQP(Advanced Message Queuing Protocol)의 기능들은 메시지 지향, 큐잉, 라우팅(P2P 및 발행-구독), 신뢰성, 보안이다.
+
+![mq](./image/amqp_exam.png)
+
+명칭 | 설명
+---|---
+Publisher(Producer) | 메시지를 생성하고 발송하는 주체.
+Publish(Producing)  | 메시지를 전송하는 행위
+Exchange            | Publisher(Producer)로 부터 수신한 메시지를 큐에 분배하는 라우터 역할
+Routes              | 들어온 메시지를 Queue의 분배하는 행위
+Queue               | 메시지를 메모리나 디스크에 저장했다가 Consumer에게 메시지를 전달 하는 역할
+Binding             | Exchange와 Queue의 관계를 정의
+Consumes(Subscribe) | Consumer가 Queue에 접근하여 메시지를 가져오는 행위.
+Consumer            | 메시지를 가져오는 주체.
+
+
+
 ### 출처 
 - https://steady-snail.tistory.com/165
+- https://www.rabbitmq.com/tutorials/amqp-concepts.html
