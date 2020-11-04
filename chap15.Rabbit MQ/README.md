@@ -1,9 +1,9 @@
 # Rabbit MQ
 
-## MQ 란?
+## 1 MQ 란?
 > MQ(Message Queue)란 메시지를 이용하여 여러 서비스들을 연결해주는 미들웨어 솔루션.  
 
-### 장점
+### 1.1 장점
 - 비동기 : Queue에 넣기 때문에 나중에 처리할 수 있습니다.
 - 비동조 : Application과 분리할 수 있습니다.
 - 탄력성 : 일부가 실패 시 전체는 영향을 받지 않습니다
@@ -14,13 +14,13 @@
 
 ![mq](./image/mq.png)
 
-## Rabbit MQ
+## 2 Rabbit MQ
 > AMQP 를 구현한 오픈 소스 메시지 브로커 소프트웨어이며, STOMP, MQTT 및 기타 프로토콜을 지원한다.
 > AMQP(Advanced Message Queuing Protocol)의 기능들은 메시지 지향, 큐잉, 라우팅(P2P 및 발행-구독), 신뢰성, 보안이다.
 
 ![mq](./image/amqp_exam.png)
 
-### 용어 정리
+### 2.1 용어 정리
 명칭 | 설명
 ---|---
 Publisher(Producer) | 메시지를 생성하고 발송하는 주체.
@@ -32,13 +32,16 @@ Binding             | Exchange와 Queue의 관계를 정의
 Consumes(Subscribe) | Consumer가 Queue에 접근하여 메시지를 가져오는 행위.
 Consumer            | 메시지를 가져오는 주체.
 
-### Exchanges and Exchange Types
+<br>
+<br>
+
+### 3 Exchanges and Exchange Types
 Exchange type | Default pre-declared names | 설명
 ---|---|---
-Direct exchange     | (Empty string) and amq.direct
-Fanout exchange     | amq.fanout
-Topic exchange      | amq.topic
-Headers exchange    | amq.match (and amq.headers in RabbitMQ)
+Direct exchange     | (Empty string) and amq.direct | 라우팅 키를 이용해 메시지를 라우팅 하고, 하나의 큐에 여러개의 라우팅 키를 지정할 수 있다.
+Fanout exchange     | amq.fanout | exchange에 등록된 모든 큐에 메세지를 전송한다.
+Topic exchange      | amq.topic | 라우팅 키 패턴을 이용하여 메세지를 라우팅한다.
+Headers exchange    | amq.match (and amq.headers in RabbitMQ) | 라우팅 키 말고 헤더를 사용하여 라우팅한다.
 
 ### 출처 
 - https://steady-snail.tistory.com/165
