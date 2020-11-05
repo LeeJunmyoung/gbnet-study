@@ -35,7 +35,7 @@ Consumer            | 메시지를 가져오는 주체.
 <br>
 <br>
 
-### 3 Exchanges and Exchange Types
+### 2.2 Exchanges and Exchange Types
 Exchange type | Default pre-declared names | 설명
 ---|---|---
 Direct exchange     | (Empty string) and amq.direct | 라우팅 키를 이용해 메시지를 라우팅 하고, 하나의 큐에 여러개의 라우팅 키를 지정할 수 있다.
@@ -43,12 +43,29 @@ Fanout exchange     | amq.fanout | exchange에 등록된 모든 큐에 메세지
 Topic exchange      | amq.topic | 라우팅 키 패턴을 이용하여 메세지를 라우팅한다.
 Headers exchange    | amq.match (and amq.headers in RabbitMQ) | 라우팅 키 말고 헤더를 사용하여 라우팅한다.
 
-### 4. 설치
+## 3 MQ 맛보기
+
+### 3.1 설치
 ```
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 # management - guest / guest
 ```
+
+### 3.2 큐 생성
+![mq](./image/add_queue.png)
+
+### 3.3 토픽 바인딩
+![mq](./image/add_bind.png)
+
+### 3.4 publish message
+![mq](./image/publish_msg.png)
+
+### 3.5 메시지 확인
+![mq](./image/get_message.png)
+
+### 3.6 구독
+![mq](./image/subscribe_java.png)
 
 ### 출처 
 - https://steady-snail.tistory.com/165
