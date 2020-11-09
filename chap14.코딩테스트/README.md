@@ -359,3 +359,56 @@ public class BinarySortTest {
 > 컴퓨터는 연산 속도에 한계가 있고, 메모리 공간을 사용할 수 있는 데이터의 개수도 한정적 이다.  
 > 탑다운은 큰문제를 해결하기위해 작은문제를 호출  
 > 바텀업은 작은 문제부터 차근차근 답을 도출   
+
+
+``` 
+# 탑다운 방식
+public class TopDownTest {
+
+	static int dp[] = new int[100];
+	
+	static {
+		for(int num = 0; num < 100; num++)
+			dp[num] = -1;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(fibonacci(10));
+	}
+
+	static int fibonacci(int n) {
+		if (n == 0)
+			return 0;
+		if (n == 1)
+			return 1;
+
+		if (dp[n] != -1)
+			return dp[n];
+
+		dp[n] = fibonacci(n - 1) + fibonacci(n - 2);
+		return dp[n];
+	}
+
+}
+
+
+# 바텀업 방식
+public class BottomUpTest {
+
+	static int dp[] = new int[100];
+	
+	public static void main(String[] args) {
+		System.out.println(fibonacci(10));
+	}
+
+	static int fibonacci(int n)
+	{
+		dp[0] = 0; dp[1] = 1;
+		for (int i = 2; i <= n; i++)
+			dp[i] = dp[i - 1] + dp[i - 2];
+		
+		return dp[n];
+	}
+}
+
+```
