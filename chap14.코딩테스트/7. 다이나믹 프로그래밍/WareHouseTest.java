@@ -10,7 +10,7 @@
  * 
  * output
  * 8 (2번째 4번째 창고에서 꺼낸 값)
- *
+ * 
  */
 public class WareHouseTest {
 
