@@ -1,7 +1,7 @@
 # Tomcat Graceful Shutdown
 
 
-### 기존 톰캣 재기동시 (스크립트 사용, 미트박스 기준)
+### 기존 톰캣 재기동시 (스크립트 사용)
 ```
 #!/bin/bash
 
@@ -25,17 +25,6 @@ sleep 1
 tail -f /path/catalina.out
 ```
 
-
-### 기존 톰캣 재기동시 (젠킨스 사용, 미트박스 기준)
-```
-...
-
-/path/shutdown.sh
-sleep 3
-/path/startup.sh
-
-...
-```
 
 
 ### ./shutdown.sh
